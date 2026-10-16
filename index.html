@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore practical AI books, handbooks and digital learning resources from Smart AI Books.">
+  <title>Smart AI Books | AI-Powered Book Publishing</title>
+  <style>
+    :root {
+      --navy: #102b46;
+      --gold: #e5b43c;
+      --cream: #f8f7f2;
+      --ink: #222b35;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; }
+    .container { width: min(1100px, 92%); margin: auto; }
+    header {
+      background: white;
+      padding: 18px 0;
+      border-bottom: 1px solid #e6e6e6;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .brand { color: var(--navy); font-size: 23px; font-weight: 800; }
+    .brand span { color: #c18d16; }
+    nav { display: flex; gap: 20px; flex-wrap: wrap; }
+    nav a { color: var(--navy); font-size: 14px; }
+    .hero {
+      background: var(--navy);
+      color: white;
+      padding: 80px 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    h1 { font-size: clamp(36px, 5vw, 58px); line-height: 1.12; margin: 14px 0; }
+    .hero p { color: #e0e8ef; font-size: 17px; }
+    .button {
+      display: inline-block;
+      background: var(--gold);
+      color: #172333;
+      padding: 12px 22px;
+      border-radius: 5px;
+      font-weight: bold;
+      margin: 12px 8px 0 0;
+    }
+    .button-outline {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: white;
+    }
+    .book-art {
+      background: #1b3e5e;
+      border: 1px solid #42617b;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+    }
+    .book-art .symbol { font-size: 76px; }
+    .book-art h2 { color: var(--gold); margin: 0; }
+    section { padding: 65px 0; }
+    .section-title { text-align: center; margin-bottom: 35px; }
+    .section-title h2 { color: var(--navy); font-size: 32px; margin: 0; }
+    .section-title p { color: #65717c; }
+    .books {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .book {
+      border: 1px solid #e1e4e7;
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+      background: white;
+    }
+    .cover {
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: var(--navy);
+      color: white;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 5px 6px 0 #d4d7da;
+    }
+    .cover strong { font-size: 24px; line-height: 1.2; }
+    .cover small { color: var(--gold); margin-top: 12px; }
+    .book h3 { color: var(--navy); }
+    .book p { color: #65717c; font-size: 14px; }
+    .book .button { margin-top: 4px; }
+    .about { background: var(--cream); }
+    .about-inner { max-width: 760px; margin: auto; text-align: center; }
+    .about h2 { color: var(--navy); font-size: 30px; }
+    .contact { text-align: center; }
+    footer { background: #0b2035; color: white; padding: 28px 0; text-align: center; }
+    footer a { color: var(--gold); }
+    @media (max-width: 700px) {
+      .hero { padding: 52px 0; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .books { grid-template-columns: 1fr; }
+      nav { gap: 12px; }
+      .brand { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">SMART <span>AI BOOKS</span></a>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#books">Books</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Learn · Create · Grow</div>
+          <h1>AI-Powered Books for a Smarter Future</h1>
+          <p>
+            Discover practical books, technology guides and educational
+            resources designed to help you understand AI and use it effectively.
+          </p>
+          <a class="button" href="#books">Explore Our Books →</a>
+          <a class="button button-outline" href="#about">About Us</a>
+        </div>
+        <div class="book-art">
+          <div class="symbol">📚</div>
+          <h2>Knowledge Meets AI</h2>
+          <p>Practical knowledge. New possibilities.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="books">
+      <div class="container">
+        <div class="section-title">
+          <h2>Explore Our Books</h2>
+          <p>Practical guides for learning, creativity and productivity.</p>
+        </div>
+        <div class="books">
+          <article class="book">
+            <div class="cover">
+              <strong>ChatGPT<br>Made Simple</strong>
+              <small>A Practical Guide</small>
+            </div>
+            <h3>ChatGPT Made Simple</h3>
+            <p>A practical introduction to using ChatGPT for learning and work.</p>
+            <a class="button" href="#contact">View Book</a>
+          </article>
+          <article class="book">
+            <div class="cover">
+              <strong>MASTERING<br>GROK</strong>
+              <small>A Complete Guide</small>
+            </div>
+            <h3>Mastering Grok</h3>
+            <p>Explore AI features, useful prompts and practical workflows.</p>
+            <a class="button" href="#contact">View Book</a>
+          </article>
+          <article class="book">
+            <div class="cover">
+              <strong>AI TOOLS<br>HANDBOOK</strong>
+              <small>Tools for Work & Creativity</small>
+            </div>
+            <h3>AI Tools Handbook</h3>
+            <p>A guide to AI tools for productivity and business tasks.</p>
+            <a class="button" href="#contact">View Book</a>
+          </article>
+        </div>
+        <p style="text-align:center;color:#65717c;font-size:13px;margin-top:25px">
+          Replace these sample cover designs and descriptions with your actual published books.
+        </p>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-inner">
+        <div class="eyebrow">About our brand</div>
+        <h2>Making AI Knowledge Accessible</h2>
+        <p>
+          Smart AI Books creates and publishes educational books and practical
+          guides with the assistance of artificial intelligence and human
+          review. Our goal is to make technology easier to understand and use.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Discover Your Next Book</h2>
+          <p>Explore our books and find the right guide for your learning journey.</p>
+        </div>
+        <a class="button" href="#books">Browse Books</a>
+        <p style="margin-top:24px">
+          Business: Smart AI Books<br>
+          Website: smartaibooks.in
+        </p>
+        <p style="color:#65717c;font-size:13px">
+          Add your business email and actual purchase links before publishing.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>SMART AI BOOKS</strong>
+      <p>AI-Powered Book Publishing</p>
+      <p>© <span id="year"></span> Smart AI Books. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
