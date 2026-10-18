@@ -927,17 +927,12 @@
   </div>
 
   <!-- Product Detail Modal -->
-<!-- Inside openProductDetail function -->
-
-
-    <div class="modal-overlay" id="productModal">
+  <div class="modal-overlay" id="productModal">
     <div class="modal-container">
       <div class="modal-header">
         <h2 id="modalProductTitle">Product Details</h2>
         <button class="modal-close" onclick="closeModal('productModal')"><i class="fa-solid fa-xmark"></i></button>
       </div>
-
-      
       <div class="modal-body" id="modalProductContent">
         <!-- Populated via JS -->
       </div>
@@ -1035,42 +1030,51 @@
   <script>
     // Master Product Catalogue Dataset with Subcategories
     let products = [
-     {
-  id: 1,
-  title: "ChatGPT Made Simple",
-  category: "Books & eBooks",
-  subCategory: "Computer AI",
-  fileType: "PDF",
-  level: "Beginner",
-  price: 499,
-  cover: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&auto=format&fit=crop&q=60",
-  description: "A practical guide to understanding and leveraging ChatGPT for everyday professional productivity.",
-  sampleFile: "samples/Text_AI_Book.pdf" // <--- Points to your uploaded PDF
-},
-{
-  id: 2,
-  title: "Mastering Grok",
-  category: "Books & eBooks",
-  subCategory: "Computer AI",
-  fileType: "PDF",
-  level: "Intermediate",
-  price: 599,
-  cover: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60",
-  description: "Deep dive into advanced AI interactions and code generation workflows.",
-  sampleFile: "samples/Code_AI_Book.pdf" // <--- Points to your uploaded PDF
-},
-{
-  id: 3,
-  title: "AI Voice Synthesis Guide",
-  category: "Books & eBooks",
-  subCategory: "Computer AI",
-  fileType: "PDF",
-  level: "Advanced",
-  price: 649,
-  cover: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&auto=format&fit=crop&q=60",
-  description: "Comprehensive manual on neural text-to-speech architectures and voice cloning.",
-  sampleFile: "samples/Audio_AI_Book.pdf" // <--- Points to your uploaded PDF
-}
+      {
+        id: 1,
+        title: "ChatGPT Made Simple",
+        category: "Books & eBooks",
+        subCategory: "Computer AI",
+        fileType: "PDF",
+        level: "Beginner",
+        price: 499,
+        cover: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&auto=format&fit=crop&q=60",
+        description: "A practical guide to understanding and leveraging ChatGPT for everyday professional productivity.",
+        sampleFile: "samples/Text_AI_Book.pdf",
+        includes: "Complete 180-page PDF guide + 50 ready-to-use prompt templates.",
+        compatibility: "Any PDF reader or mobile device.",
+        license: "Single-user personal & professional license."
+      },
+      {
+        id: 2,
+        title: "Mastering Grok",
+        category: "Books & eBooks",
+        subCategory: "Computer AI",
+        fileType: "PDF",
+        level: "Intermediate",
+        price: 599,
+        cover: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60",
+        description: "Deep dive into advanced AI interactions and code generation workflows.",
+        sampleFile: "samples/Code_AI_Book.pdf",
+        includes: "Comprehensive PDF eBook + Companion code snippets.",
+        compatibility: "Compatible with all e-readers and PDF viewers.",
+        license: "Single-user personal license."
+      },
+      {
+        id: 3,
+        title: "AI Voice Synthesis Guide",
+        category: "Books & eBooks",
+        subCategory: "Computer AI",
+        fileType: "PDF",
+        level: "Advanced",
+        price: 649,
+        cover: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&auto=format&fit=crop&q=60",
+        description: "Comprehensive manual on neural text-to-speech architectures and voice cloning.",
+        sampleFile: "samples/Audio_AI_Book.pdf",
+        includes: "Comprehensive manual + python script snippets.",
+        compatibility: "PDF Reader required.",
+        license: "Single-user personal license."
+      },
       {
         id: 4,
         title: "Mindful Peace: Spiritual Awakening",
@@ -1283,6 +1287,13 @@
       const product = products.find(p => p.id === productId);
       if(!product) return;
 
+      const sampleBtnHtml = product.sampleFile ? `
+        <div style="margin-bottom: 16px;">
+          <a href="${product.sampleFile}" target="_blank" class="btn btn-outline btn-sm" style="color: var(--navy); border-color: var(--navy);">
+            <i class="fa-solid fa-eye" style="margin-right: 6px;"></i> Preview Free Sample PDF
+          </a>
+        </div>` : '';
+
       document.getElementById('modalProductTitle').innerText = product.title;
       document.getElementById('modalProductContent').innerHTML = `
         <div style="display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: start;">
@@ -1293,6 +1304,8 @@
             <div style="font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 12px;">₹${product.price} <span style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);">(Instant Digital Download)</span></div>
             <p style="margin-bottom: 16px; color: var(--text-muted);">${product.description}</p>
             
+            ${sampleBtnHtml}
+
             <div style="background-color: var(--bg); padding: 16px; border-radius: 6px; margin-bottom: 16px; font-size: 0.9rem;">
               <p><strong>Format:</strong> ${product.fileType}</p>
               <p><strong>Skill Level:</strong> ${product.level}</p>
@@ -1373,7 +1386,6 @@
       }
       toggleCart();
       
-      // Open Checkout Simulation Modal
       const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
       document.getElementById('legalModalTitle').innerText = 'Secure Digital Checkout';
       document.getElementById('legalModalContent').innerHTML = `
@@ -1448,7 +1460,7 @@
       }
 
       matched.forEach(p => {
-        const item = document.div = document.createElement('div');
+        const item = document.createElement('div');
         item.style.cssText = `display: flex; gap: 12px; padding: 10px; border-bottom: 1px solid var(--border); align-items: center; cursor: pointer;`;
         item.innerHTML = `
           <img src="${p.cover}" style="width: 45px; height: 45px; object-fit: cover; border-radius: 4px;">
