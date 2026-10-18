@@ -812,3 +812,800 @@
             <p>AI tutorials, prompt collections, practical workflows, and automation guides.</p>
           </div>
         </div>
+
+        <h2 class="section-title">Featured Digital Products</h2>
+        <p class="section-subtitle">Hand-crafted professional tools and guides ready for instant download.</p>
+        
+        <div class="product-grid" id="featuredProductGrid">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Store Owner Configurator Note -->
+        <div class="admin-section">
+          <h3 style="color: var(--navy); margin-bottom: 8px;"><i class="fa-solid fa-gear" style="color: var(--gold);"></i> Store Owner Assistant</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;">You can customize catalogue items, pricing, or add new products instantly using the built-in configuration tool.</p>
+          <button class="btn btn-navy btn-sm" onclick="openAdminModal()"><i class="fa-solid fa-code" style="margin-right: 6px;"></i> Edit Catalogue JSON</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CATALOGUE VIEW -->
+    <div id="catalogueView" style="display: none;">
+      <div class="container">
+        <div class="catalogue-layout">
+          <!-- Sidebar Filters -->
+          <div class="filters-sidebar">
+            <h3>Filter Products</h3>
+            
+            <div class="filter-group">
+              <label for="categoryFilter">Category</label>
+              <select id="categoryFilter" class="filter-select" onchange="applyFilters()">
+                <option value="all">All Categories</option>
+                <option value="Books & eBooks">Books & eBooks</option>
+                <option value="Excel Templates">Excel Templates</option>
+                <option value="Power BI Dashboards">Power BI Dashboards</option>
+                <option value="AI Guides & Toolkits">AI Guides & Toolkits</option>
+              </select>
+            </div>
+
+            <!-- Books Subtopic Filter (Spiritual, Psychology, Computer AI, Childrens, Adults, Sports, Martial Arts, Others) -->
+            <div class="filter-group" id="subCategoryGroup">
+              <label for="subCategoryFilter">Book Genre / Subtopic</label>
+              <select id="subCategoryFilter" class="filter-select" onchange="applyFilters()">
+                <option value="all">All Genres / Subtopics</option>
+                <option value="Spiritual">Spiritual</option>
+                <option value="Psychology">Psychology</option>
+                <option value="Computer AI">Computer & AI</option>
+                <option value="Childrens">Children's</option>
+                <option value="Adults">Adults</option>
+                <option value="Sports">Sports</option>
+                <option value="Martial Arts">Martial Arts</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="fileTypeFilter">File Format</label>
+              <select id="fileTypeFilter" class="filter-select" onchange="applyFilters()">
+                <option value="all">All Formats</option>
+                <option value="PDF">PDF</option>
+                <option value="XLSX">XLSX</option>
+                <option value="XLSM">XLSM (Macros)</option>
+                <option value="PBIX">PBIX</option>
+                <option value="ZIP">ZIP Bundle</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="levelFilter">Skill Level</label>
+              <select id="levelFilter" class="filter-select" onchange="applyFilters()">
+                <option value="all">All Levels</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Product Listing Grid -->
+          <div class="product-grid-container">
+            <div class="catalogue-controls">
+              <span id="productCountLabel" style="font-weight: 600; color: var(--navy);">Showing all products</span>
+              <select id="sortSelect" class="filter-select" style="width: 180px;" onchange="applyFilters()">
+                <option value="featured">Sort by: Featured</option>
+                <option value="newest">Newest Releases</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+              </select>
+            </div>
+
+            <div class="product-grid" id="catalogueProductGrid">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Shopping Cart Drawer -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3><i class="fa-solid fa-cart-shopping"></i> Your Shopping Cart</h3>
+      <button class="modal-close" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-items" id="cartItemsList">
+      <!-- Cart items injected here -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotalPrice">₹0</span>
+      </div>
+      <button class="btn btn-gold" style="width: 100%;" onclick="proceedToCheckout()">Proceed to Secure Checkout</button>
+    </div>
+  </div>
+
+  <!-- Product Detail Modal -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="modalProductTitle">Product Details</h2>
+        <button class="modal-close" onclick="closeModal('productModal')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="modalProductContent">
+        <!-- Populated via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Legal & Info Modal -->
+  <div class="modal-overlay" id="legalModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="legalModalTitle">Information</h2>
+        <button class="modal-close" onclick="closeModal('legalModal')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="legalModalContent">
+        <!-- Populated via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Store Admin JSON Editor Modal -->
+  <div class="modal-overlay" id="adminModal">
+    <div class="modal-container" style="max-width: 900px;">
+      <div class="modal-header">
+        <h2>Store Catalogue JSON Manager</h2>
+        <button class="modal-close" onclick="closeModal('adminModal')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;">Edit the products JSON data below to instantly update items, prices, or subtopics across the storefront:</p>
+        <textarea id="adminJsonInput" style="width: 100%; height: 350px; font-family: monospace; font-size: 0.85rem; padding: 12px; border: 1px solid var(--border); border-radius: 6px;"></textarea>
+        <div style="margin-top: 16px; display: flex; justify-content: flex-end; gap: 12px;">
+          <button class="btn btn-navy btn-sm" onclick="saveAdminCatalogue()">Save & Apply Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="modal-overlay" id="searchModal">
+    <div class="modal-container" style="max-width: 600px;">
+      <div class="modal-header">
+        <h2>Search Smart AI Books</h2>
+        <button class="modal-close" onclick="toggleSearchModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="quickSearchInput" placeholder="Search by title, topic, or keyword (e.g. ChatGPT, Excel MIS, Silambam)..." class="search-input" style="font-size: 1rem; padding: 14px;" oninput="executeQuickSearch(this.value)">
+        <div id="quickSearchResults" style="margin-top: 16px; max-height: 350px; overflow-y: auto;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Smart AI Books</h4>
+        <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 12px;">Practical digital knowledge and ready-to-use productivity tools for students, professionals, creators, and businesses.</p>
+        <p style="font-size: 0.85rem; color: var(--gold);">Tagline: Learn Smarter. Work Faster. Create More.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#" onclick="switchView('home')">Home</a></li>
+          <li><a href="#" onclick="switchView('catalogue', 'all')">All Products Catalogue</a></li>
+          <li><a href="#" onclick="switchView('catalogue', 'Books & eBooks')">Books & eBooks</a></li>
+          <li><a href="#" onclick="switchView('catalogue', 'Excel Templates')">Excel Templates</a></li>
+          <li><a href="#" onclick="switchView('catalogue', 'Power BI Dashboards')">Power BI Dashboards</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal & Policies</h4>
+        <ul>
+          <li><a href="#" onclick="openModal('legalModal', 'about')">About Us</a></li>
+          <li><a href="#" onclick="openModal('legalModal', 'contact')">Contact Us</a></li>
+          <li><a href="#" onclick="openModal('legalModal', 'privacy')">Privacy Policy</a></li>
+          <li><a href="#" onclick="openModal('legalModal', 'terms')">Terms & Conditions</a></li>
+          <li><a href="#" onclick="openModal('legalModal', 'refund')">Refund Policy</a></li>
+          <li><a href="#" onclick="openModal('legalModal', 'license')">Digital Product License</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 12px;">Subscribe for exclusive free productivity templates and AI guides.</p>
+        <div style="display: flex; gap: 8px;">
+          <input type="email" placeholder="Your email address" style="padding: 8px; border-radius: 4px; border: none; font-size: 0.85rem; flex: 1;">
+          <button class="btn btn-gold btn-sm" onclick="alert('Thank you for subscribing to Smart AI Books!')">Join</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Smart AI Books (smartaibooks.in). All rights reserved. Built for high performance & reliability.
+    </div>
+  </footer>
+
+  <!-- JavaScript Application Logic -->
+  <script>
+    // Master Product Catalogue Dataset with Subcategories
+    let products = [
+      {
+        id: 1,
+        title: "ChatGPT Made Simple",
+        category: "Books & eBooks",
+        subCategory: "Computer AI",
+        fileType: "PDF",
+        level: "Beginner",
+        price: 499,
+        cover: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&auto=format&fit=crop&q=60",
+        description: "A practical guide to understanding and leveraging ChatGPT for everyday professional productivity and creative writing.",
+        includes: "Complete 180-page PDF guide + 50 ready-to-use prompt templates.",
+        compatibility: "Any PDF reader or mobile device.",
+        license: "Single-user personal & professional license."
+      },
+      {
+        id: 2,
+        title: "Mastering Grok",
+        category: "Books & eBooks",
+        subCategory: "Computer AI",
+        fileType: "PDF",
+        level: "Intermediate",
+        price: 599,
+        cover: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60",
+        description: "Deep dive into advanced AI interactions, real-time knowledge synthesis, and practical workflow automation.",
+        includes: "Comprehensive PDF eBook + Companion code snippets.",
+        compatibility: "Compatible with all e-readers and PDF viewers.",
+        license: "Single-user personal license."
+      },
+      {
+        id: 3,
+        title: "Silambam: The Ancient Martial Art",
+        category: "Books & eBooks",
+        subCategory: "Martial Arts",
+        fileType: "PDF",
+        level: "Intermediate",
+        price: 649,
+        cover: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=500&auto=format&fit=crop&q=60",
+        description: "Explore the history, footwork, weapon drills, and regional styles of the traditional martial art of Silambam.",
+        includes: "Illustrated guide book in high-resolution PDF format.",
+        compatibility: "PDF Reader required.",
+        license: "Personal reading license."
+      },
+      {
+        id: 4,
+        title: "Mindful Peace: Spiritual Awakening",
+        category: "Books & eBooks",
+        subCategory: "Spiritual",
+        fileType: "PDF",
+        level: "Beginner",
+        price: 399,
+        cover: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&auto=format&fit=crop&q=60",
+        description: "Guided reflections, meditation principles, and daily spiritual practices for inner peace and mental clarity.",
+        includes: "Digital book and guided journal prompts.",
+        compatibility: "Universal PDF format.",
+        license: "Personal use license."
+      },
+      {
+        id: 5,
+        title: "Childhood Wonder Coloring & Activity Book",
+        category: "Books & eBooks",
+        subCategory: "Childrens",
+        fileType: "PDF",
+        level: "Beginner",
+        price: 299,
+        cover: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=500&auto=format&fit=crop&q=60",
+        description: "Engaging line-art coloring book featuring friendly animals, dinosaurs, and creative activities for kids.",
+        includes: "Print-ready 50-page PDF book optimized for home printing.",
+        compatibility: "Printable PDF.",
+        license: "For home & family use."
+      },
+      {
+        id: 6,
+        title: "Cricket Mastery: Batting Strokes & Drills",
+        category: "Books & eBooks",
+        subCategory: "Sports",
+        fileType: "PDF",
+        level: "Intermediate",
+        price: 499,
+        cover: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=500&auto=format&fit=crop&q=60",
+        description: "Comprehensive breakdown of 50 distinct cricket batting techniques, footwork alignment, and coaching drills.",
+        includes: "Full illustrated reference manual.",
+        compatibility: "PDF reader.",
+        license: "Personal licensing."
+      },
+      {
+        id: 7,
+        title: "Excel MIS Reporting Toolkit",
+        category: "Excel Templates",
+        subCategory: "Others",
+        fileType: "XLSX",
+        level: "Intermediate",
+        price: 799,
+        cover: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60",
+        description: "Automated management information system workbook with executive dashboard summaries and dynamic charts.",
+        includes: "Ready-to-use Excel workbook (.xlsx) with sample data.",
+        compatibility: "Microsoft Excel 2016 or newer (Desktop/Mac).",
+        license: "Business organizational license."
+      },
+      {
+        id: 8,
+        title: "Excel VBA Automation Templates",
+        category: "Excel Templates",
+        subCategory: "Others",
+        fileType: "XLSM",
+        level: "Advanced",
+        price: 999,
+        cover: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&auto=format&fit=crop&q=60",
+        description: "Powerful macro-enabled workbooks designed to automate repetitive data consolidation, report generation, and sheet formatting.",
+        includes: "Macro-enabled workbook (.xlsm) + documented VBA source code modules.",
+        compatibility: "Microsoft Excel with Macros enabled (Desktop required).",
+        license: "Professional developer license."
+      },
+      {
+        id: 9,
+        title: "Power BI Business Dashboard Pack",
+        category: "Power BI Dashboards",
+        subCategory: "Others",
+        fileType: "PBIX",
+        level: "Advanced",
+        price: 1299,
+        cover: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=500&auto=format&fit=crop&q=60",
+        description: "Professional executive reporting suite featuring sales analytics, financial performance, and inventory tracking.",
+        includes: "PBIX template file, sample Excel datasets, and step-by-step PDF setup instructions.",
+        compatibility: "Power BI Desktop (Free/Pro).",
+        license: "Single-company internal deployment license."
+      },
+      {
+        id: 10,
+        title: "AI Tools Handbook & Prompt Library",
+        category: "AI Guides & Toolkits",
+        subCategory: "Computer AI",
+        fileType: "ZIP",
+        level: "Beginner",
+        price: 699,
+        cover: "https://images.unsplash.com/photo-1677442136019-21780efad99a?w=500&auto=format&fit=crop&q=60",
+        description: "Curated collection of top AI tools, evaluation matrices, and 200+ prompt templates for marketing, coding, and writing.",
+        includes: "ZIP archive containing structured PDF guides and JSON prompt libraries.",
+        compatibility: "Universal access (.zip/.pdf).",
+        license: "Individual commercial license."
+      }
+    ];
+
+    let cart = [];
+
+    // Navigation & View Controller
+    function switchView(viewName, categoryFilterValue = 'all') {
+      window.scrollTo(0, 0);
+      document.getElementById('homeView').style.display = viewName === 'home' ? 'block' : 'none';
+      document.getElementById('catalogueView').style.display = viewName === 'catalogue' ? 'block' : 'none';
+      
+      // Update nav active states
+      document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
+      if(viewName === 'home') {
+        document.getElementById('navHome').classList.add('active');
+      } else {
+        document.getElementById('navCatalogue').classList.add('active');
+        document.getElementById('categoryFilter').value = categoryFilterValue;
+        applyFilters();
+      }
+
+      // Close mobile menu if open
+      document.getElementById('navLinks').classList.remove('active');
+    }
+
+    // Render Featured Products on Homepage
+    function renderFeaturedProducts() {
+      const grid = document.getElementById('featuredProductGrid');
+      grid.innerHTML = '';
+      products.slice(0, 6).forEach(product => {
+        grid.appendChild(createProductCard(product));
+      });
+    }
+
+    // Create Reusable Product Card Component
+    function createProductCard(product) {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <div class="product-img-wrapper">
+          <span class="product-tag">${product.category}</span>
+          <img src="${product.cover}" alt="${product.title}" loading="lazy">
+        </div>
+        <div class="product-body">
+          <div class="product-meta">
+            <span>${product.fileType} • ${product.level}</span>
+            <span>${product.subCategory || ''}</span>
+          </div>
+          <h3 class="product-title">${product.title}</h3>
+          <p class="product-desc">${product.description.substring(0, 85)}...</p>
+          <div class="product-footer">
+            <span class="product-price">₹${product.price}</span>
+            <div class="product-actions">
+              <button class="btn btn-outline btn-sm" style="color: var(--navy); border-color: var(--navy);" onclick="openProductDetail(${product.id})">Details</button>
+              <button class="btn btn-gold btn-sm" onclick="addToCart(${product.id})"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      `;
+      return card;
+    }
+
+    // Apply Filters & Sorting on Catalogue View
+    function applyFilters() {
+      const catVal = document.getElementById('categoryFilter').value;
+      const subCatVal = document.getElementById('subCategoryFilter').value;
+      const fileVal = document.getElementById('fileTypeFilter').value;
+      const levelVal = document.getElementById('levelFilter').value;
+      const sortVal = document.getElementById('sortSelect').value;
+
+      // Show/hide subcategory filter group based on whether Books & eBooks is selected
+      const subCatGroup = document.getElementById('subCategoryGroup');
+      if (catVal === 'Books & eBooks' || catVal === 'all') {
+        subCatGroup.style.display = 'block';
+      } else {
+        subCatGroup.style.display = 'none';
+      }
+
+      let filtered = products.filter(p => {
+        const matchCat = catVal === 'all' || p.category === catVal;
+        const matchSubCat = (catVal !== 'Books & eBooks' && catVal !== 'all') || subCatVal === 'all' || p.subCategory === subCatVal;
+        const matchFile = fileVal === 'all' || p.fileType === fileVal;
+        const matchLevel = levelVal === 'all' || p.level === levelVal;
+        return matchCat && matchSubCat && matchFile && matchLevel;
+      });
+
+      // Sorting
+      if(sortVal === 'newest') {
+        filtered.sort((a,b) => b.id - a.id);
+      } else if(sortVal === 'price-low') {
+        filtered.sort((a,b) => a.price - b.price);
+      } else if(sortVal === 'price-high') {
+        filtered.sort((a,b) => b.price - a.price);
+      }
+
+      const grid = document.getElementById('catalogueProductGrid');
+      grid.innerHTML = '';
+      
+      if(filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No products match your selected filter criteria.</div>`;
+        document.getElementById('productCountLabel').innerText = `Showing 0 products`;
+        return;
+      }
+
+      document.getElementById('productCountLabel').innerText = `Showing ${filtered.length} products`;
+      filtered.forEach(p => {
+        grid.appendChild(createProductCard(p));
+      });
+    }
+
+    // Product Detail Modal View
+    function openProductDetail(productId) {
+      const product = products.find(p => p.id === productId);
+      if(!product) return;
+
+      document.getElementById('modalProductTitle').innerText = product.title;
+      document.getElementById('modalProductContent').innerHTML = `
+        <div style="display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: start;">
+          <img src="${product.cover}" alt="${product.title}" style="width: 100%; border-radius: 6px; object-fit: cover; box-shadow: var(--shadow);">
+          <div>
+            <span class="product-tag" style="position: relative; top:0; left:0; display:inline-block; margin-bottom: 8px;">${product.category} (${product.subCategory || 'General'})</span>
+            <h3 style="color: var(--navy); margin-bottom: 8px; font-size: 1.4rem;">${product.title}</h3>
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 12px;">₹${product.price} <span style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);">(Instant Digital Download)</span></div>
+            <p style="margin-bottom: 16px; color: var(--text-muted);">${product.description}</p>
+            
+            <div style="background-color: var(--bg); padding: 16px; border-radius: 6px; margin-bottom: 16px; font-size: 0.9rem;">
+              <p><strong>Format:</strong> ${product.fileType}</p>
+              <p><strong>Skill Level:</strong> ${product.level}</p>
+              <p><strong>What's Included:</strong> ${product.includes}</p>
+              <p><strong>Software Requirements:</strong> ${product.compatibility}</p>
+              <p><strong>License:</strong> ${product.license}</p>
+            </div>
+
+            <div style="display: flex; gap: 12px;">
+              <button class="btn btn-gold" onclick="addToCart(${product.id}); closeModal('productModal'); toggleCart();">Buy Now Securely</button>
+              <button class="btn btn-outline" style="color: var(--navy); border-color: var(--navy);" onclick="addToCart(${product.id}); closeModal('productModal');">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      `;
+      openModal('productModal');
+    }
+
+    // Shopping Cart Functions
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      const existing = cart.find(item => item.id === productId);
+      if(existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({...product, qty: 1});
+      }
+      updateCartUI();
+      showToast(`Added "${product.title}" to cart.`);
+    }
+
+    function updateCartUI() {
+      const countEl = document.getElementById('cartCount');
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      countEl.innerText = totalItems;
+
+      const listEl = document.getElementById('cartItemsList');
+      listEl.innerHTML = '';
+
+      if(cart.length === 0) {
+        listEl.innerHTML = `<p style="text-align: center; color: var(--text-muted); margin-top: 40px;">Your shopping cart is currently empty.</p>`;
+        document.getElementById('cartTotalPrice').innerText = '₹0';
+        return;
+      }
+
+      let totalAmount = 0;
+      cart.forEach(item => {
+        totalAmount += item.price * item.qty;
+        const itemEl = document.createElement('div');
+        itemEl.className = 'cart-item';
+        itemEl.innerHTML = `
+          <img src="${item.cover}" alt="${item.title}">
+          <div class="cart-item-details">
+            <div class="cart-item-title">${item.title}</div>
+            <div class="cart-item-price">₹${item.price} × ${item.qty}</div>
+            <button class="btn-sm" style="background:none; border:none; color: #ef4444; cursor: pointer; padding:0; font-size:0.8rem;" onclick="removeFromCart(${item.id})">Remove</button>
+          </div>
+        `;
+        listEl.appendChild(itemEl);
+      });
+
+      document.getElementById('cartTotalPrice').innerText = `₹${totalAmount}`;
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.id !== productId);
+      updateCartUI();
+    }
+
+    function toggleCart() {
+      document.getElementById('cartDrawer').classList.toggle('active');
+    }
+
+    function proceedToCheckout() {
+      if(cart.length === 0) {
+        alert('Your cart is empty.');
+        return;
+      }
+      toggleCart();
+      
+      // Open Checkout Simulation Modal
+      const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      document.getElementById('legalModalTitle').innerText = 'Secure Digital Checkout';
+      document.getElementById('legalModalContent').innerHTML = `
+        <div style="max-width: 500px; margin: 0 auto;">
+          <h3 style="color: var(--navy); margin-bottom: 12px;">Order Summary</h3>
+          <p style="margin-bottom: 16px; color: var(--text-muted);">Total Items: ${cart.reduce((s, i) => s + i.qty, 0)} | <strong>Total Amount: ₹${total}</strong></p>
+          
+          <form onsubmit="handleCheckoutSubmit(event)" style="display: flex; flex-direction: column; gap: 12px;">
+            <div>
+              <label style="font-size: 0.85rem; font-weight: 600;">Full Name</label>
+              <input type="text" required placeholder="Enter your full name" class="search-input" style="padding: 10px;">
+            </div>
+            <div>
+              <label style="font-size: 0.85rem; font-weight: 600;">Email Address (For Instant File Delivery)</label>
+              <input type="email" required placeholder="name@example.com" class="search-input" style="padding: 10px;">
+            </div>
+            <div>
+              <label style="font-size: 0.85rem; font-weight: 600;">Payment Method</label>
+              <select class="filter-select">
+                <option>UPI (Google Pay / PhonePe / Paytm)</option>
+                <option>Credit / Debit Card (Visa, MasterCard, RuPay)</option>
+                <option>Net Banking</option>
+              </select>
+            </div>
+            <div style="background-color: #fff9e6; padding: 12px; border-radius: 6px; font-size: 0.85rem; color: #854d0e; margin-top: 8px;">
+              <i class="fa-solid fa-lock"></i> Secure 256-bit encrypted checkout. Instant digital download links will be emailed and generated on screen upon verification.
+            </div>
+            <button type="submit" class="btn btn-gold" style="margin-top: 12px; width: 100%;">Pay ₹${total} & Download Instantly</button>
+          </form>
+        </div>
+      `;
+      openModal('legalModal', 'custom');
+    }
+
+    function handleCheckoutSubmit(e) {
+      e.preventDefault();
+      cart = [];
+      updateCartUI();
+      document.getElementById('legalModalContent').innerHTML = `
+        <div style="text-align: center; padding: 20px;">
+          <i class="fa-solid fa-circle-check" style="font-size: 3.5rem; color: #16a34a; margin-bottom: 16px;"></i>
+          <h3 style="color: var(--navy); margin-bottom: 8px;">Payment Successful & Verified!</h3>
+          <p style="color: var(--text-muted); margin-bottom: 20px;">Thank you for your purchase from Smart AI Books. Your order has been processed securely.</p>
+          <div style="background-color: var(--bg); padding: 16px; border-radius: 6px; margin-bottom: 20px; text-align: left; font-size: 0.9rem;">
+            <p><strong>Order ID:</strong> SAB-${Math.floor(100000 + Math.random() * 900000)}</p>
+            <p><strong>Status:</strong> Verified & Delivered</p>
+            <p style="margin-top: 8px; color: var(--navy); font-weight: 600;"><i class="fa-solid fa-download"></i> Secure download links have been dispatched to your email and are ready below.</p>
+          </div>
+          <button class="btn btn-gold" onclick="closeModal('legalModal'); switchView('home');">Download Files Now</button>
+        </div>
+      `;
+    }
+
+    // Quick Search Modal
+    function toggleSearchModal() {
+      const modal = document.getElementById('searchModal');
+      modal.classList.toggle('active');
+      if(modal.classList.contains('active')) {
+        setTimeout(() => document.getElementById('quickSearchInput').focus(), 100);
+      }
+    }
+
+    function executeQuickSearch(query) {
+      const resultsEl = document.getElementById('quickSearchResults');
+      resultsEl.innerHTML = '';
+      if(!query.trim()) return;
+
+      const matched = products.filter(p => p.title.toLowerCase().includes(query.toLowerCase()) || p.description.toLowerCase().includes(query.toLowerCase()));
+      if(matched.length === 0) {
+        resultsEl.innerHTML = `<p style="color: var(--text-muted); text-align: center; padding: 20px;">No matching digital products found.</p>`;
+        return;
+      }
+
+      matched.forEach(p => {
+        const item = document.div = document.createElement('div');
+        item.style.cssText = `display: flex; gap: 12px; padding: 10px; border-bottom: 1px solid var(--border); align-items: center; cursor: pointer;`;
+        item.innerHTML = `
+          <img src="${p.cover}" style="width: 45px; height: 45px; object-fit: cover; border-radius: 4px;">
+          <div style="flex: 1;">
+            <div style="font-weight: 600; font-size: 0.9rem; color: var(--navy);">${p.title}</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">${p.category} • ₹${p.price}</div>
+          </div>
+        `;
+        item.onclick = () => {
+          toggleSearchModal();
+          openProductDetail(p.id);
+        };
+        resultsEl.appendChild(item);
+      });
+    }
+
+    // Legal / Info Modals Content Handler
+    function openModal(modalId, type) {
+      if(modalId === 'legalModal' && type !== 'custom') {
+        const titleEl = document.getElementById('legalModalTitle');
+        const contentEl = document.getElementById('legalModalContent');
+        
+        if(type === 'about') {
+          titleEl.innerText = 'About Smart AI Books';
+          contentEl.innerHTML = `
+            <h3 style="color: var(--navy); margin-bottom: 12px;">Learn Smarter. Work Faster. Create More.</h3>
+            <p style="margin-bottom: 12px; color: var(--text-muted);">Smart AI Books (smartaibooks.in) is a premier digital knowledge store providing practical AI learning guides, Excel automation toolkits, Power BI executive dashboards, and specialized books across spiritual, technical, and lifestyle genres.</p>
+            <p style="color: var(--text-muted);">Our mission is to empower professionals, students, creators, and businesses with production-ready digital resources that save time and accelerate success.</p>
+          `;
+        } else if(type === 'contact') {
+          titleEl.innerText = 'Contact Us';
+          contentEl.innerHTML = `
+            <h3 style="color: var(--navy); margin-bottom: 12px;">Get in Touch</h3>
+            <p style="margin-bottom: 16px; color: var(--text-muted);">Have questions regarding our digital books, Excel macros, or custom Power BI dashboards? Reach out to our support team.</p>
+            <form onsubmit="event.preventDefault(); alert('Your message has been sent successfully. We will respond within 24 hours.'); closeModal('legalModal');" style="display: flex; flex-direction: column; gap: 12px;">
+              <input type="text" placeholder="Your Name" required class="search-input" style="padding: 10px;">
+              <input type="email" placeholder="Your Email Address" required class="search-input" style="padding: 10px;">
+              <textarea placeholder="Your Message or Download Inquiry" rows="4" required class="search-input" style="padding: 10px;"></textarea>
+              <button type="submit" class="btn btn-gold">Send Message</button>
+            </form>
+          `;
+        } else if(type === 'privacy') {
+          titleEl.innerText = 'Privacy Policy';
+          contentEl.innerHTML = `
+            <h3 style="color: var(--navy); margin-bottom: 12px;">Privacy & Data Protection</h3>
+            <p style="margin-bottom: 12px; color: var(--text-muted);">At Smart AI Books, we respect your privacy. We collect only necessary details (such as your name and email address) strictly required to process digital product orders and secure file delivery.</p>
+            <p style="color: var(--text-muted);">We never sell, trade, or share your personal data with third-party advertisers. All financial transactions are handled securely through verified Indian payment gateways.</p>
+          `;
+        } else if(type === 'terms') {
+          titleEl.innerText = 'Terms and Conditions';
+          contentEl.innerHTML = `
+            <h3 style="color: var(--navy); margin-bottom: 12px;">Website Terms of Use</h3>
+            <p style="margin-bottom: 12px; color: var(--text-muted);">By accessing smartaibooks.in and purchasing our digital resources, you agree to comply with our digital licensing and copyright policies.</p>
+            <p style="color: var(--text-muted);">All digital downloads, templates, workbooks, and books are protected intellectual property licensed strictly for individual or organizational use as specified.</p>
+          `;
+        } else if(type === 'refund') {
+          titleEl.innerText = 'Refund and Cancellation Policy';
+          contentEl.innerHTML = `
+            <h3 style="color: var(--navy); margin-bottom: 12px;">Digital Product Refund Policy</h3>
+            <p style="margin-bottom: 12px; color: var(--text-muted);">Due to the immediate digital nature of our downloadable products (PDFs, Excel workbooks, PBIX files, and ZIP archives), all sales are generally final once download links have been generated.</p>
+            <p style="color: var(--text-muted);">If you experience technical corruption with a downloaded file or encounter access issues, please contact our support desk for an immediate replacement or resolution.</p>
+          `;
+        } else if(type === 'license') {
+          titleEl.innerText = 'Digital Product License';
+          contentEl.innerHTML = `
+            <h3 style="color: var(--navy); margin-bottom: 12px;">Standard Digital License</h3>
+            <p style="margin-bottom: 12px; color: var(--text-muted);">Purchasing a digital product from Smart AI Books grants you a non-exclusive, non-transferable license to use the files.</p>
+            <p style="color: var(--text-muted);"><strong>Permitted:</strong> Personal learning, internal business reporting, and single-user applications. <br><strong>Prohibited:</strong> Reselling, redistributing, public uploading, or sharing raw template files on public repositories.</p>
+          `;
+        } else if(type === 'freeResources') {
+          titleEl.innerText = 'Free Resources & Sample Templates';
+          contentEl.innerHTML = `
+            <h3 style="color: var(--navy); margin-bottom: 12px;">Free Productivity Downloads</h3>
+            <p style="margin-bottom: 16px; color: var(--text-muted);">Download our complimentary starter samples to test out our Excel formatting and AI prompt worksheets.</p>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="background-color: var(--bg); padding: 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+                <div><strong>AI Prompt Starter Sheet (PDF)</strong><br><small style="color: var(--text-muted);">Basic prompt frameworks for daily tasks.</small></div>
+                <button class="btn btn-navy btn-sm" onclick="alert('Downloading free sample...')">Download</button>
+              </div>
+              <div style="background-color: var(--bg); padding: 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+                <div><strong>Monthly Budget & Expense Tracker (XLSX)</strong><br><small style="color: var(--text-muted);">Simple personal finance template.</small></div>
+                <button class="btn btn-navy btn-sm" onclick="alert('Downloading free sample...')">Download</button>
+              </div>
+            </div>
+          `;
+        }
+      }
+      document.getElementById(modalId).classList.add('active');
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+
+    // Store Admin JSON Editor Functions
+    function openAdminModal() {
+      document.getElementById('adminJsonInput').value = JSON.stringify(products, null, 2);
+      document.getElementById('adminModal').classList.add('active');
+    }
+
+    function saveAdminCatalogue() {
+      try {
+        const parsed = JSON.parse(document.getElementById('adminJsonInput').value);
+        if(Array.isArray(parsed)) {
+          products = parsed;
+          renderFeaturedProducts();
+          applyFilters();
+          closeModal('adminModal');
+          showToast('Store catalogue updated successfully!');
+        } else {
+          alert('Invalid JSON format. Must be an array of product objects.');
+        }
+      } catch(err) {
+        alert('JSON Parsing Error: ' + err.message);
+      }
+    }
+
+    // Toast Notification Banner
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.style.cssText = `
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        background-color: var(--navy);
+        color: var(--white);
+        padding: 12px 20px;
+        border-radius: 6px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+        z-index: 3000;
+        font-size: 0.9rem;
+        font-weight: 500;
+        animation: fadeInOut 3s ease forwards;
+      `;
+      toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color: var(--gold); margin-right: 8px;"></i> ${message}`;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const navLinks = document.getElementById('navLinks');
+      const icon = document.getElementById('hamburgerIcon');
+      navLinks.classList.toggle('active');
+      if(navLinks.classList.contains('active')) {
+        icon.className = 'fa-solid fa-xmark';
+      } else {
+        icon.className = 'fa-solid fa-bars';
+      }
+    }
+
+    // Initialise Application on Load
+    window.onload = function() {
+      renderFeaturedProducts();
+      applyFilters();
+    };
+  </script>
+</body>
+</html>
