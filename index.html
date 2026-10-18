@@ -1,1359 +1,814 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<div style="background-color: #BE9123; color: #123758; text-align: center; padding: 8px 16px; font-weight: 600; font-size: 0.9rem;">
-  ⚠️ Site Under Development: Smart AI Books is currently being updated. Full digital purchasing and download features will be live shortly.
-</div>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart AI Books | Practical AI Guides, Excel Templates & Power BI Dashboards</title>
-    <meta name="description" content="Learn Smarter. Work Faster. Create More. Premier digital bookstore for AI guides, Excel MIS tools, VBA automation, and Power BI dashboards in India.">
-    <link rel="canonical" href="https://smartaibooks.in">
-    
-    <!-- Open Graph Metadata -->
-    <meta property="og:title" content="Smart AI Books - Digital Knowledge & Productivity Tools">
-    <meta property="og:description" content="Learn Smarter. Work Faster. Create More. Ready-to-use AI ebooks, Excel templates, and Power BI dashboards.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://smartaibooks.in">
-
-    <!-- Fonts & Tailwind CSS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: {
-                            DEFAULT: '#123758',
-                            dark: '#0d2841',
-                            light: '#1e4b75'
-                        },
-                        gold: {
-                            DEFAULT: '#BE9123',
-                            hover: '#9e771a',
-                            light: '#f7edcc'
-                        },
-                        surface: '#FFFFFF',
-                        bglight: '#F4F6F8',
-                        maintext: '#232323'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F4F6F8;
-            color: #232323;
-        }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-        .modal-blur {
-            backdrop-filter: blur(4px);
-        }
-    </style>
-</head>
-<body class="flex flex-col min-h-screen">
-
-    <!-- TOP ANNOUNCEMENT BAR -->
-    <div class="bg-navy text-white text-xs sm:text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
-        <span class="bg-gold text-navy font-bold text-[10px] uppercase px-2 py-0.5 rounded-full">New</span>
-        <span>Instant Digital Downloads in INR (₹) • UPI, Cards & NetBanking Supported</span>
-    </div>
-
-    <!-- MAIN HEADER NAVIGATION -->
-    <header class="sticky top-0 z-40 bg-surface shadow-sm border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                
-                <!-- Logo -->
-                <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
-                    <div class="w-10 h-10 rounded-lg bg-navy flex items-center justify-center text-gold font-bold text-xl shadow-inner">
-                        <i class="fa-solid fa-brain"></i>
-                    </div>
-                    <div>
-                        <span class="text-xl font-extrabold text-navy tracking-tight block leading-none">Smart AI Books</span>
-                        <span class="text-[10px] text-gray-500 font-medium tracking-wide">smartaibooks.in</span>
-                    </div>
-                </div>
-
-                <!-- Desktop Navigation Links -->
-                <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium text-gray-700">
-                    <button onclick="navigateTo('home')" class="hover:text-navy transition-colors">Home</button>
-                    <button onclick="filterByCategory('Books & eBooks')" class="hover:text-navy transition-colors">Books & eBooks</button>
-                    <button onclick="filterByCategory('Excel Templates')" class="hover:text-navy transition-colors">Excel Templates</button>
-                    <button onclick="filterByCategory('Power BI Dashboards')" class="hover:text-navy transition-colors">Power BI</button>
-                    <button onclick="filterByCategory('AI Guides & Toolkits')" class="hover:text-navy transition-colors">AI Guides</button>
-                    <button onclick="openModal('free-resources-modal')" class="text-gold font-semibold hover:underline">Free Downloads</button>
-                    <button onclick="openModal('about-modal')" class="hover:text-navy transition-colors">About</button>
-                </nav>
-
-<div class="subtopic-pills" style="display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0;">
-  <button class="pill-btn active" onclick="filterBySubtopic('all')">All Books</button>
-  <button class="pill-btn" onclick="filterBySubtopic('Spiritual')">Spiritual</button>
-  <button class="pill-btn" onclick="filterBySubtopic('Psychology')">Psychology</button>
-  <button class="pill-btn" onclick="filterBySubtopic('Computer & AI')">Computer & AI</button>
-  <button class="pill-btn" onclick="filterBySubtopic('Children\'s')">Children's</button>
-  <button class="pill-btn" onclick="filterBySubtopic('Adults')">Adults</button>
-  <button class="pill-btn" onclick="filterBySubtopic('Sports')">Sports</button>
-  <button class="pill-btn" onclick="filterBySubtopic('Martial Arts')">Martial Arts</button>
-  <button class="pill-btn" onclick="filterBySubtopic('Others')">Others</button>
-</div>
-
-
-              
-                <!-- Search & Cart Action Buttons -->
-                <div class="flex items-center space-x-3">
-                    <!-- Global Search Trigger -->
-                    <div class="relative hidden sm:block w-48 xl:w-64">
-                        <input type="text" id="global-search-input" onkeyup="handleGlobalSearch(event)" placeholder="Search books, templates..." class="w-full bg-bglight border border-gray-300 rounded-lg pl-9 pr-3 py-1.5 text-xs text-maintext focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent">
-                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-xs"></i>
-                    </div>
-
-                    <!-- Cart Drawer Button -->
-                    <button onclick="toggleCartDrawer()" class="relative p-2.5 text-gray-700 hover:text-navy rounded-lg hover:bg-gray-100 transition-colors" aria-label="Shopping Cart">
-                        <i class="fa-solid fa-cart-shopping text-lg"></i>
-                        <span id="cart-badge" class="hidden absolute top-1 right-1 bg-gold text-navy font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
-                    </button>
-
-                    <!-- Mobile Menu Button -->
-                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-gray-700 rounded-lg hover:bg-gray-100 focus:outline-none" aria-label="Toggle Navigation">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 bg-surface px-4 pt-3 pb-6 space-y-3">
-            <div class="relative mb-3">
-                <input type="text" id="mobile-search-input" onkeyup="handleMobileSearch(event)" placeholder="Search books, templates..." class="w-full bg-bglight border border-gray-300 rounded-lg pl-9 pr-3 py-2 text-sm">
-                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400"></i>
-            </div>
-            <button onclick="navigateTo('home'); toggleMobileMenu();" class="block w-full text-left py-2 font-medium text-gray-800">Home</button>
-            <button onclick="filterByCategory('Books & eBooks'); toggleMobileMenu();" class="block w-full text-left py-2 font-medium text-gray-800">Books & eBooks</button>
-            <button onclick="filterByCategory('Excel Templates'); toggleMobileMenu();" class="block w-full text-left py-2 font-medium text-gray-800">Excel Templates</button>
-            <button onclick="filterByCategory('Power BI Dashboards'); toggleMobileMenu();" class="block w-full text-left py-2 font-medium text-gray-800">Power BI Dashboards</button>
-            <button onclick="filterByCategory('AI Guides & Toolkits'); toggleMobileMenu();" class="block w-full text-left py-2 font-medium text-gray-800">AI Guides & Toolkits</button>
-            <button onclick="openModal('free-resources-modal'); toggleMobileMenu();" class="block w-full text-left py-2 font-semibold text-gold">Free Resources</button>
-            <button onclick="openModal('about-modal'); toggleMobileMenu();" class="block w-full text-left py-2 font-medium text-gray-800">About Us</button>
-            <button onclick="openModal('admin-guide-modal'); toggleMobileMenu();" class="block w-full text-left py-2 text-xs font-semibold text-navy bg-blue-50 px-3 py-1.5 rounded">Store Admin Guide</button>
-        </div>
-    </header>
-
-    <!-- MAIN CONTENT CONTAINER -->
-    <main id="main-content" class="flex-grow">
-        
-        <!-- HERO SECTION -->
-        <section class="bg-gradient-to-b from-navy to-navy-dark text-white py-12 md:py-20 relative overflow-hidden">
-            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#BE9123_1px,transparent_1px)] [background-size:16px_16px]"></div>
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    
-                    <!-- Left Hero Text -->
-                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                        <span class="inline-flex items-center gap-2 bg-white/10 text-gold font-semibold text-xs px-3 py-1.5 rounded-full border border-gold/30">
-                            <i class="fa-solid fa-bolt text-gold"></i> Practical Knowledge & Productivity Tools
-                        </span>
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-                            Build Skills. Create More. <br class="hidden sm:inline"><span class="text-gold">Work Smarter.</span>
-                        </h1>
-                        <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal">
-                            Discover practical AI books, ready-to-use Excel templates, professional Power BI dashboards, and step-by-step guides designed to help you learn faster and work more efficiently.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
-                            <button onclick="scrollToCatalogue()" class="bg-gold hover:bg-gold-hover text-navy font-bold px-8 py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
-                                Explore Products <i class="fa-solid fa-arrow-right text-xs"></i>
-                            </button>
-                            <button onclick="openModal('free-resources-modal')" class="bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-3.5 rounded-lg border border-white/20 transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
-                                <i class="fa-solid fa-download text-gold"></i> Free Resources
-                            </button>
-                        </div>
-                        <div class="pt-4 flex items-center justify-center lg:justify-start gap-6 text-xs text-gray-300">
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-gold"></i> Verified Digital Downloads</span>
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-indian-rupee-sign text-gold"></i> Indian UPI / Cards</span>
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-file-code text-gold"></i> Ready-to-Use</span>
-                        </div>
-                    </div>
-
-                    <!-- Right Visual Mockup Graphic -->
-                    <div class="lg:col-span-5 flex justify-center">
-                        <div class="relative w-full max-w-md bg-white/5 p-6 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-sm">
-                            <div class="space-y-4">
-                                <div class="bg-surface rounded-xl p-4 shadow-md text-maintext flex items-center gap-4 border-l-4 border-gold">
-                                    <div class="w-12 h-12 bg-blue-100 text-navy rounded-lg flex items-center justify-center font-bold text-xl">
-                                        <i class="fa-solid fa-file-excel"></i>
-                                    </div>
-                                    <div class="flex-grow">
-                                        <h4 class="font-bold text-sm">Excel MIS Reporting Toolkit</h4>
-                                        <p class="text-xs text-gray-500">Automated VBA & Interactive Dashboards</p>
-                                    </div>
-                                    <span class="text-xs font-extrabold text-navy bg-gray-100 px-2 py-1 rounded">₹499</span>
-                                </div>
-                                
-                                <div class="bg-surface rounded-xl p-4 shadow-md text-maintext flex items-center gap-4 border-l-4 border-navy">
-                                    <div class="w-12 h-12 bg-amber-100 text-gold rounded-lg flex items-center justify-center font-bold text-xl">
-                                        <i class="fa-solid fa-book-open"></i>
-                                    </div>
-                                    <div class="flex-grow">
-                                        <h4 class="font-bold text-sm">ChatGPT Made Simple</h4>
-                                        <p class="text-xs text-gray-500">Master Prompting & AI Workflows</p>
-                                    </div>
-                                    <span class="text-xs font-extrabold text-navy bg-gray-100 px-2 py-1 rounded">₹299</span>
-                                </div>
-
-                                <div class="bg-surface rounded-xl p-4 shadow-md text-maintext flex items-center gap-4 border-l-4 border-yellow-500">
-                                    <div class="w-12 h-12 bg-yellow-100 text-yellow-700 rounded-lg flex items-center justify-center font-bold text-xl">
-                                        <i class="fa-solid fa-chart-column"></i>
-                                    </div>
-                                    <div class="flex-grow">
-                                        <h4 class="font-bold text-sm">Power BI Business Pack</h4>
-                                        <p class="text-xs text-gray-500">Complete PBIX + Sample Datasets</p>
-                                    </div>
-                                    <span class="text-xs font-extrabold text-navy bg-gray-100 px-2 py-1 rounded">₹699</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- CATEGORY CARDS SECTION -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                
-                <!-- Category 1 -->
-                <div onclick="filterByCategory('Books & eBooks')" class="bg-surface rounded-xl p-5 shadow-sm border border-gray-200 hover:shadow-md hover:border-gold transition-all cursor-pointer group">
-                    <div class="w-12 h-12 rounded-lg bg-blue-50 text-navy group-hover:bg-navy group-hover:text-gold flex items-center justify-center text-xl mb-3 transition-colors">
-                        <i class="fa-solid fa-book"></i>
-                    </div>
-                    <h3 class="font-bold text-gray-900 group-hover:text-navy text-base">Books & eBooks</h3>
-                    <p class="text-xs text-gray-500 mt-1">AI reference guides, educational ebooks & productivity manuals.</p>
-                </div>
-
-                <!-- Category 2 -->
-                <div onclick="filterByCategory('Excel Templates')" class="bg-surface rounded-xl p-5 shadow-sm border border-gray-200 hover:shadow-md hover:border-gold transition-all cursor-pointer group">
-                    <div class="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-700 group-hover:bg-emerald-700 group-hover:text-white flex items-center justify-center text-xl mb-3 transition-colors">
-                        <i class="fa-solid fa-table"></i>
-                    </div>
-                    <h3 class="font-bold text-gray-900 group-hover:text-navy text-base">Excel Templates</h3>
-                    <p class="text-xs text-gray-500 mt-1">Automated MIS reports, VBA macro tools & finance trackers.</p>
-                </div>
-
-                <!-- Category 3 -->
-                <div onclick="filterByCategory('Power BI Dashboards')" class="bg-surface rounded-xl p-5 shadow-sm border border-gray-200 hover:shadow-md hover:border-gold transition-all cursor-pointer group">
-                    <div class="w-12 h-12 rounded-lg bg-amber-50 text-amber-600 group-hover:bg-amber-600 group-hover:text-white flex items-center justify-center text-xl mb-3 transition-colors">
-                        <i class="fa-solid fa-chart-pie"></i>
-                    </div>
-                    <h3 class="font-bold text-gray-900 group-hover:text-navy text-base">Power BI Dashboards</h3>
-                    <p class="text-xs text-gray-500 mt-1">Business intelligence reports, sample datasets & PBIX files.</p>
-                </div>
-
-                <!-- Category 4 -->
-                <div onclick="filterByCategory('AI Guides & Toolkits')" class="bg-surface rounded-xl p-5 shadow-sm border border-gray-200 hover:shadow-md hover:border-gold transition-all cursor-pointer group">
-                    <div class="w-12 h-12 rounded-lg bg-purple-50 text-purple-700 group-hover:bg-purple-700 group-hover:text-white flex items-center justify-center text-xl mb-3 transition-colors">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    </div>
-                    <h3 class="font-bold text-gray-900 group-hover:text-navy text-base">AI Guides & Toolkits</h3>
-                    <p class="text-xs text-gray-500 mt-1">Prompt collections, workflow guides & practical AI tutorials.</p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- PRODUCT CATALOGUE & FILTERING SECTION -->
-function filterProducts() {
-  const selectedMainCategory = document.getElementById('categoryFilter').value;
-  const selectedSubCategory = document.getElementById('subCategoryFilter').value;
-  const searchKeyword = document.getElementById('searchInput').value.toLowerCase();
-
-  const filtered = products.filter(product => {
-    // Check Main Category match
-    const matchesMain = selectedMainCategory === 'all' || product.category === selectedMainCategory;
-    
-    // Check Sub Category match (only applies if Books & eBooks is selected or subcategory is active)
-    let matchesSub = true;
-    if (product.category === 'Books & eBooks' && selectedSubCategory !== 'all') {
-      matchesSub = product.subCategory === selectedSubCategory;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart AI Books | Learn Smarter. Work Faster. Create More.</title>
+  <meta name="description" content="Practical digital knowledge, AI learning guides, Excel automation templates, and Power BI dashboards.">
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome for UI Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --navy: #123758;
+      --gold: #BE9123;
+      --gold-hover: #a57d1d;
+      --white: #FFFFFF;
+      --bg: #F4F6F8;
+      --text: #232323;
+      --text-muted: #555555;
+      --border: #E2E8F0;
+      --card-bg: #FFFFFF;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --transition: all 0.3s ease;
     }
 
-    // Check search term
-    const matchesSearch = product.title.toLowerCase().includes(searchKeyword) || 
-                          product.description.toLowerCase().includes(searchKeyword);
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
 
-    return matchesMain && matchesSub && matchesSearch;
-  });
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-  renderProductGrid(filtered);
-}
+    /* Top Announcement Notice */
+    .announcement-banner {
+      background-color: var(--gold);
+      color: var(--navy);
+      text-align: center;
+      padding: 10px 16px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
 
-// Add event listener to the sub-category dropdown
-document.getElementById('subCategoryFilter').addEventListener('change', filterProducts);
+    /* Header & Navigation */
+    header {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      font-size: 1.15rem;
+      color: var(--navy);
+      cursor: pointer;
+      position: relative;
+      padding: 6px;
+      transition: var(--transition);
+    }
+
+    .icon-btn:hover {
+      color: var(--gold);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: var(--gold);
+      color: var(--navy);
+      font-size: 0.7rem;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--navy);
+      cursor: pointer;
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a4975 100%);
+      color: var(--white);
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #e2e8f0;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .btn-gold {
+      background-color: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-gold:hover {
+      background-color: var(--gold-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-navy {
+      background-color: var(--navy);
+      color: var(--white);
+    }
+
+    .btn-navy:hover {
+      background-color: #0d2740;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    /* Section Title */
+    .section-title {
+      font-size: 2rem;
+      color: var(--navy);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 48px;
+    }
+
+    /* Categories Grid */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .category-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    .category-card i {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .category-card h3 {
+      font-size: 1.25rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .category-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Catalogue Section with Sidebar */
+    .catalogue-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .catalogue-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .filters-sidebar {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      height: fit-content;
+      box-shadow: var(--shadow);
+    }
+
+    .filters-sidebar h3 {
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .filter-group {
+      margin-bottom: 20px;
+    }
+
+    .filter-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .filter-select, .search-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      outline: none;
+      background-color: var(--white);
+    }
+
+    .filter-select:focus, .search-input:focus {
+      border-color: var(--gold);
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    /* Product Grid */
+    .product-grid-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .catalogue-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--card-bg);
+      padding: 16px 20px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .product-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px rgba(0,0,0,0.06);
+    }
+
+    .product-img-wrapper {
+      height: 180px;
+      background-color: #e2e8f0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .product-card:hover .product-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background-color: var(--navy);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .product-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .product-title {
+      font-size: 1.1rem;
+      color: var(--navy);
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .product-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .product-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-sm {
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      border-radius: 4px;
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-container {
+      background-color: var(--white);
+      border-radius: 8px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      transform: translateY(20px);
+      transition: var(--transition);
+    }
+
+    .modal-overlay.active .modal-container {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      padding: 20px 24px;
+      background-color: var(--navy);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h2 {
+      font-size: 1.25rem;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    .modal-body {
+      padding: 24px;
+    }
+
+    /* Cart Drawer / Modal */
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100%;
+      background-color: var(--white);
+      box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+      z-index: 2000;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-drawer.active {
+      right: 0;
+    }
+
+    .cart-header {
+      padding: 20px;
+      background-color: var(--navy);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 12px;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+    }
+
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .cart-item-details {
+      flex: 1;
+    }
+
+    .cart-item-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .cart-item-price {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .cart-footer {
+      padding: 20px;
+      background-color: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    /* Store Manager Tool / Configurator */
+    .admin-section {
+      background-color: #fff9e6;
+      border: 1px dashed var(--gold);
+      padding: 24px;
+      border-radius: 8px;
+      margin: 40px 0;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--navy);
+      color: #e2e8f0;
+      padding: 60px 24px 20px;
+      margin-top: auto;
+    }
+
+    .footer-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    /* Responsive Mobile Menu */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        padding: 24px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Banner -->
+  <div class="announcement-banner">
+    <i class="fa-solid fa-triangle-exclamation"></i> 
+    Notice: Smart AI Books is currently under active development. Full digital store deployment is in progress.
+  </div>
+
+  <!-- Header & Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo" onclick="switchView('home')">
+        <i class="fa-solid fa-book-open-reader" style="color: var(--gold);"></i> Smart AI <span>Books</span>
+      </a>
       
-        <section id="catalogue-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-gray-200 gap-4">
-                <div>
-                    <h2 class="text-2xl font-extrabold text-navy">Digital Product Catalogue</h2>
-                    <p class="text-xs text-gray-500 mt-0.5">Explore ready-to-use digital knowledge tools and automation assets.</p>
-                </div>
-                
-                <!-- Sort Options -->
-                <div class="flex items-center gap-3">
-                    <label for="sort-select" class="text-xs font-semibold text-gray-600 whitespace-nowrap">Sort By:</label>
-                    <select id="sort-select" onchange="renderProducts()" class="bg-surface border border-gray-300 rounded-lg text-xs font-medium px-3 py-2 text-maintext focus:outline-none focus:ring-2 focus:ring-navy">
-                        <option value="featured">Featured First</option>
-                        <option value="price-low">Price: Low to High</option>
-                        <option value="price-high">Price: High to Low</option>
-                        <option value="newest">Newest Additions</option>
-                    </select>
-                </div>
-            </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#" onclick="switchView('home')" class="active" id="navHome">Home</a></li>
+        <li><a href="#" onclick="switchView('catalogue', 'all')" id="navCatalogue">Books & eBooks</a></li>
+        <li><a href="#" onclick="switchView('catalogue', 'Excel Templates')" id="navExcel">Excel Templates</a></li>
+        <li><a href="#" onclick="switchView('catalogue', 'Power BI Dashboards')" id="navPBI">Power BI Dashboards</a></li>
+        <li><a href="#" onclick="switchView('catalogue', 'AI Guides & Toolkits')" id="navAI">AI Guides</a></li>
+        <li><a href="#" onclick="openModal('legalModal', 'freeResources')">Free Resources</a></li>
+        <li><a href="#" onclick="openModal('legalModal', 'about')">About</a></li>
+      </ul>
 
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 pt-6">
-                
-                <!-- SIDEBAR FILTERS -->
-                <aside class="lg:col-span-1 bg-surface p-5 rounded-xl border border-gray-200 shadow-sm h-fit space-y-6">
-                    <div class="flex items-center justify-between pb-3 border-b border-gray-100">
-                        <h3 class="font-bold text-navy text-sm flex items-center gap-2">
-                            <i class="fa-solid fa-filter text-gold"></i> Filters
-                        </h3>
-                        <button onclick="resetFilters()" class="text-[11px] font-semibold text-gray-500 hover:text-navy underline">Reset All</button>
-                    </div>
-
-                    <!-- Category Filter -->
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Category</label>
-                        <div class="space-y-1.5 text-xs text-gray-600">
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="filter-category" value="all" checked onchange="renderProducts()" class="accent-navy">
-                                <span>All Categories</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="filter-category" value="Books & eBooks" onchange="renderProducts()" class="accent-navy">
-                                <span>Books & eBooks</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="filter-category" value="Excel Templates" onchange="renderProducts()" class="accent-navy">
-                                <span>Excel Templates</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="filter-category" value="Power BI Dashboards" onchange="renderProducts()" class="accent-navy">
-                                <span>Power BI Dashboards</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="filter-category" value="AI Guides & Toolkits" onchange="renderProducts()" class="accent-navy">
-                                <span>AI Guides & Toolkits</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Format Filter -->
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">File Format</label>
-                        <div class="space-y-1.5 text-xs text-gray-600">
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" value=".pdf" onchange="renderProducts()" class="filter-format accent-navy">
-                                <span>PDF Documents</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" value=".xlsx" onchange="renderProducts()" class="filter-format accent-navy">
-                                <span>Excel (.xlsx)</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" value=".xlsm" onchange="renderProducts()" class="filter-format accent-navy">
-                                <span>Excel Macro (.xlsm)</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" value=".pbix" onchange="renderProducts()" class="filter-format accent-navy">
-                                <span>Power BI (.pbix)</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" value=".zip" onchange="renderProducts()" class="filter-format accent-navy">
-                                <span>ZIP Archive</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Skill Level Filter -->
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Skill Level</label>
-                        <select id="filter-level" onchange="renderProducts()" class="w-full bg-bglight border border-gray-300 rounded-lg text-xs p-2 text-maintext">
-                            <option value="all">All Skill Levels</option>
-                            <option value="Beginner">Beginner</option>
-                            <option value="Intermediate">Intermediate</option>
-                            <option value="Advanced">Advanced</option>
-                        </select>
-                    </div>
-
-                    <!-- Price Range -->
-                    <div>
-                        <div class="flex justify-between items-center mb-1">
-                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider">Max Price</label>
-                            <span id="price-val" class="text-xs font-extrabold text-navy">₹1000</span>
-                        </div>
-                        <input type="range" id="filter-price" min="100" max="1000" step="50" value="1000" oninput="updatePriceLabel(this.value); renderProducts();" class="w-full accent-navy">
-                    </div>
-                </aside>
-
-                <!-- PRODUCT CARDS GRID -->
-                <main class="lg:col-span-3">
-                    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Products dynamically rendered here -->
-                    </div>
-
-                    <!-- Empty State -->
-                    <div id="empty-state" class="hidden text-center py-16 bg-surface rounded-xl border border-dashed border-gray-300 p-8">
-                        <i class="fa-solid fa-folder-open text-4xl text-gray-300 mb-3"></i>
-                        <h3 class="font-bold text-gray-700 text-base">No Matching Products Found</h3>
-                        <p class="text-xs text-gray-500 mt-1">Try adjusting your category, price slider, or file format filters.</p>
-                        <button onclick="resetFilters()" class="mt-4 text-xs bg-navy text-white px-4 py-2 rounded-lg font-medium hover:bg-navy-dark">Reset All Filters</button>
-                    </div>
-                </main>
-
-            </div>
-        </section>
-
-        <!-- HOW DIGITAL DELIVERY WORKS -->
-        <section class="bg-white py-12 border-t border-b border-gray-200">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-2xl mx-auto mb-10">
-                    <h2 class="text-2xl font-extrabold text-navy">Simple 3-Step Digital Delivery</h2>
-                    <p class="text-xs text-gray-500 mt-1">Get immediate lifetime access to files without waiting for physical shipping.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="text-center p-5 rounded-xl bg-bglight border border-gray-100">
-                        <div class="w-12 h-12 bg-navy text-gold rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">1</div>
-                        <h4 class="font-bold text-gray-900 text-sm">Select Your Product</h4>
-                        <p class="text-xs text-gray-500 mt-2">Browse practical AI guides, Power BI dashboards, or Excel templates formatted for immediate use.</p>
-                    </div>
-
-                    <div class="text-center p-5 rounded-xl bg-bglight border border-gray-100">
-                        <div class="w-12 h-12 bg-navy text-gold rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">2</div>
-                        <h4 class="font-bold text-gray-900 text-sm">Instant UPI / Card Payment</h4>
-                        <p class="text-xs text-gray-500 mt-2">Checkout securely using Google Pay, PhonePe, Paytm, Cards, or NetBanking in INR (₹).</p>
-                    </div>
-
-                    <div class="text-center p-5 rounded-xl bg-bglight border border-gray-100">
-                        <div class="w-12 h-12 bg-navy text-gold rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">3</div>
-                        <h4 class="font-bold text-gray-900 text-sm">Direct Secure Download</h4>
-                        <p class="text-xs text-gray-500 mt-2">Access your files immediately on screen and receive a backup link sent directly to your email.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ ACCORDION SECTION -->
-        <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <h2 class="text-2xl font-extrabold text-navy text-center mb-8">Frequently Asked Questions</h2>
-            <div class="space-y-4" id="faq-accordion">
-                
-                <div class="bg-surface rounded-lg border border-gray-200 overflow-hidden">
-                    <button onclick="toggleFaq('faq-1')" class="w-full text-left p-4 font-bold text-sm text-navy flex justify-between items-center hover:bg-gray-50">
-                        <span>How do I receive my digital purchase?</span>
-                        <i id="icon-faq-1" class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
-                    </button>
-                    <div id="faq-1" class="hidden px-4 pb-4 text-xs text-gray-600 leading-relaxed border-t border-gray-100 pt-3">
-                        Immediately upon completing your checkout, you will be redirected to an instant order summary page with direct download links. A duplicate confirmation with secure download links is also dispatched to your email address.
-                    </div>
-                </div>
-
-                <div class="bg-surface rounded-lg border border-gray-200 overflow-hidden">
-                    <button onclick="toggleFaq('faq-2')" class="w-full text-left p-4 font-bold text-sm text-navy flex justify-between items-center hover:bg-gray-50">
-                        <span>Are the Excel macro (.xlsm) templates safe to run?</span>
-                        <i id="icon-faq-2" class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
-                    </button>
-                    <div id="faq-2" class="hidden px-4 pb-4 text-xs text-gray-600 leading-relaxed border-t border-gray-100 pt-3">
-                        Yes, absolutely. All VBA code in our macro-enabled workbooks is digitally verified, non-obfuscated, and completely safe. Full setup instructions on how to unblock Excel macros in Windows are included with every download.
-                    </div>
-                </div>
-
-                <div class="bg-surface rounded-lg border border-gray-200 overflow-hidden">
-                    <button onclick="toggleFaq('faq-3')" class="w-full text-left p-4 font-bold text-sm text-navy flex justify-between items-center hover:bg-gray-50">
-                        <span>Do Power BI dashboards include sample datasets?</span>
-                        <i id="icon-faq-3" class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
-                    </button>
-                    <div id="faq-3" class="hidden px-4 pb-4 text-xs text-gray-600 leading-relaxed border-t border-gray-100 pt-3">
-                        Yes. Each Power BI bundle includes the master `.pbix` template file along with structured `.xlsx` / `.csv` sample datasets, custom color themes, and step-by-step setup documentation.
-                    </div>
-                </div>
-
-                <div class="bg-surface rounded-lg border border-gray-200 overflow-hidden">
-                    <button onclick="toggleFaq('faq-4')" class="w-full text-left p-4 font-bold text-sm text-navy flex justify-between items-center hover:bg-gray-50">
-                        <span>What is your refund policy for digital goods?</span>
-                        <i id="icon-faq-4" class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
-                    </button>
-                    <div id="faq-4" class="hidden px-4 pb-4 text-xs text-gray-600 leading-relaxed border-t border-gray-100 pt-3">
-                        Due to the immediate consumable nature of digital downloads, sales are generally final. However, if you experience a technical file corruption or corrupt download that our support team cannot resolve, we offer a 7-day money-back guarantee.
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- NEWSLETTER SIGNUP -->
-        <section class="bg-navy text-white py-12">
-            <div class="max-w-4xl mx-auto px-4 text-center space-y-4">
-                <span class="text-gold font-bold text-xs uppercase tracking-widest">Stay Ahead</span>
-                <h2 class="text-2xl font-extrabold">Get Free AI Prompts & Excel Cheat Sheets</h2>
-                <p class="text-xs text-gray-300 max-w-lg mx-auto">Join 10,000+ professionals receiving weekly AI productivity tips, free macro scripts, and dashboard design hacks.</p>
-                <form onsubmit="handleNewsletter(event)" class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto pt-2">
-                    <input type="email" required placeholder="Enter your email address" class="bg-white/10 text-white placeholder-gray-400 text-xs px-4 py-3 rounded-lg border border-white/20 focus:outline-none focus:ring-2 focus:ring-gold flex-grow">
-                    <button type="submit" class="bg-gold hover:bg-gold-hover text-navy font-bold px-6 py-3 rounded-lg text-xs transition-colors whitespace-nowrap">Subscribe Free</button>
-                </form>
-                <p class="text-[10px] text-gray-400">We respect your privacy. Unsubscribe at any time.</p>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="bg-navy-dark text-gray-400 text-xs py-12 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
-            
-            <!-- Col 1: Brand -->
-            <div class="space-y-3">
-                <div class="flex items-center gap-2 text-white font-bold text-lg">
-                    <div class="w-7 h-7 bg-gold text-navy rounded flex items-center justify-center text-sm">
-                        <i class="fa-solid fa-brain"></i>
-                    </div>
-                    <span>Smart AI Books</span>
-                </div>
-                <p class="text-gray-400 text-xs leading-relaxed">
-                    Learn Smarter. Work Faster. Create More.<br>
-                    Practical digital knowledge and ready-to-use productivity tools.
-                </p>
-                <p class="text-[11px] text-gold font-medium">Domain: smartaibooks.in</p>
-            </div>
-
-            <!-- Col 2: Quick Links -->
-            <div class="space-y-2">
-                <h4 class="text-white font-bold text-sm mb-3">Quick Navigation</h4>
-                <ul class="space-y-1.5">
-                    <li><button onclick="filterByCategory('Books & eBooks')" class="hover:text-gold transition-colors">Books & eBooks</button></li>
-                    <li><button onclick="filterByCategory('Excel Templates')" class="hover:text-gold transition-colors">Excel MIS Templates</button></li>
-                    <li><button onclick="filterByCategory('Power BI Dashboards')" class="hover:text-gold transition-colors">Power BI Reports</button></li>
-                    <li><button onclick="filterByCategory('AI Guides & Toolkits')" class="hover:text-gold transition-colors">AI Prompt Bundles</button></li>
-                    <li><button onclick="openModal('free-resources-modal')" class="hover:text-gold transition-colors">Free Resources</button></li>
-                </ul>
-            </div>
-
-            <!-- Col 3: Customer Care & Legal -->
-            <div class="space-y-2">
-                <h4 class="text-white font-bold text-sm mb-3">Legal & Support</h4>
-                <ul class="space-y-1.5">
-                    <li><button onclick="openModal('privacy-modal')" class="hover:text-gold transition-colors">Privacy Policy</button></li>
-                    <li><button onclick="openModal('terms-modal')" class="hover:text-gold transition-colors">Terms & Conditions</button></li>
-                    <li><button onclick="openModal('refund-modal')" class="hover:text-gold transition-colors">Refund & Cancellation</button></li>
-                    <li><button onclick="openModal('license-modal')" class="hover:text-gold transition-colors">Digital Product License</button></li>
-                    <li><button onclick="openModal('contact-modal')" class="hover:text-gold transition-colors">Contact Support</button></li>
-                </ul>
-            </div>
-
-            <!-- Col 4: Store Admin & Utility -->
-            <div class="space-y-3">
-                <h4 class="text-white font-bold text-sm mb-2">Store Maintenance</h4>
-                <p class="text-[11px] text-gray-400">Designed for easy non-technical management on static hosts (Netlify/Cloudflare).</p>
-                <button onclick="openModal('admin-guide-modal')" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-3 py-2 rounded text-xs w-full flex items-center justify-center gap-2 border border-white/10">
-                    <i class="fa-solid fa-sliders text-gold"></i> Store Owner Dashboard
-                </button>
-            </div>
-
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 mt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px]">
-            <p>© 2026 Smart AI Books (smartaibooks.in). All rights reserved.</p>
-            <div class="flex items-center gap-4">
-                <span><i class="fa-solid fa-lock text-gold"></i> SSL Encrypted</span>
-                <span><i class="fa-solid fa-bolt text-gold"></i> Fast CDN Hosted</span>
-            </div>
-        </div>
-    </footer>
-
-    <!-- SHOPPING CART DRAWER -->
-    <div id="cart-drawer-backdrop" onclick="toggleCartDrawer()" class="hidden fixed inset-0 bg-black/50 z-50 transition-opacity"></div>
-    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-surface shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
-        <div class="p-4 bg-navy text-white flex justify-between items-center">
-            <h3 class="font-bold text-base flex items-center gap-2">
-                <i class="fa-solid fa-cart-shopping text-gold"></i> Shopping Cart
-            </h3>
-            <button onclick="toggleCartDrawer()" class="text-gray-300 hover:text-white text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-
-        <div id="cart-items-container" class="flex-grow overflow-y-auto p-4 space-y-4 custom-scrollbar">
-            <!-- Cart items dynamically rendered -->
-        </div>
-
-        <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
-            <div class="flex justify-between text-xs text-gray-600">
-                <span>Subtotal</span>
-                <span id="cart-subtotal" class="font-bold text-gray-900">₹0</span>
-            </div>
-            <div class="flex justify-between text-xs text-gray-600">
-                <span>Tax / GST</span>
-                <span class="text-emerald-600 font-medium">Included</span>
-            </div>
-            <div class="flex justify-between text-sm font-extrabold text-navy pt-2 border-t border-gray-200">
-                <span>Total Amount</span>
-                <span id="cart-total" class="text-gold">₹0</span>
-            </div>
-
-            <button onclick="proceedToCheckout()" id="checkout-btn" class="w-full bg-gold hover:bg-gold-hover text-navy font-extrabold py-3 rounded-lg text-sm transition-all shadow-md flex items-center justify-center gap-2">
-                Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
+      <div class="nav-actions">
+        <button class="icon-btn" onclick="toggleSearchModal()" title="Search Products"><i class="fa-solid fa-search"></i></button>
+        <button class="icon-btn" onclick="toggleCart()" title="Shopping Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+        <button class="hamburger" onclick="toggleMobileMenu()"><i class="fa-solid fa-bars" id="hamburgerIcon"></i></button>
+      </div>
     </div>
+  </header>
 
-    <!-- PRODUCT DETAIL MODAL -->
-    <div id="product-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 modal-blur overflow-y-auto">
-        <div class="bg-surface rounded-2xl max-w-3xl w-full my-8 overflow-hidden shadow-2xl relative border border-gray-200">
-            <button onclick="closeModal('product-modal')" class="absolute top-4 right-4 z-10 w-8 h-8 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full flex items-center justify-center">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <div id="product-modal-body" class="p-6 md:p-8">
-                <!-- Dynamically populated -->
-            </div>
+  <!-- Main Content Area -->
+  <main id="mainContent">
+    <!-- HOME VIEW -->
+    <div id="homeView">
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Build Skills. Create More. Work Smarter.</h1>
+          <p>Discover practical AI books, ready-to-use Excel templates, professional Power BI dashboards, and step-by-step guides designed to help you learn faster and work more efficiently.</p>
+          <div class="btn-group">
+            <button class="btn btn-gold" onclick="switchView('catalogue', 'all')">Explore Products <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></button>
+            <button class="btn btn-outline" onclick="openModal('legalModal', 'freeResources')">Browse Free Resources</button>
+          </div>
         </div>
-    </div>
+      </section>
 
-    <!-- CHECKOUT MODAL -->
-    <div id="checkout-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 modal-blur">
-        <div class="bg-surface rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4 border border-gray-200">
-            <div class="flex justify-between items-center border-b pb-3">
-                <h3 class="font-extrabold text-navy text-lg flex items-center gap-2">
-                    <i class="fa-solid fa-shield-halved text-gold"></i> Secure Checkout
-                </h3>
-                <button onclick="closeModal('checkout-modal')" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-
-            <form onsubmit="processPayment(event)" class="space-y-3">
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 mb-1">Full Name</label>
-                    <input type="text" id="cust-name" required placeholder="e.g. Rahul Sharma" class="w-full border border-gray-300 rounded-lg p-2.5 text-xs">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 mb-1">Email Address (For File Delivery)</label>
-                    <input type="email" id="cust-email" required placeholder="rahul@example.com" class="w-full border border-gray-300 rounded-lg p-2.5 text-xs">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 mb-1">Select Payment Gateway</label>
-                    <div class="grid grid-cols-2 gap-2 text-xs">
-                        <label class="border border-navy bg-blue-50 p-2.5 rounded-lg flex items-center gap-2 cursor-pointer font-semibold text-navy">
-                            <input type="radio" name="payment-method" value="upi" checked class="accent-navy">
-                            <span>UPI / GPay / PhonePe</span>
-                        </label>
-                        <label class="border border-gray-200 p-2.5 rounded-lg flex items-center gap-2 cursor-pointer font-medium text-gray-700">
-                            <input type="radio" name="payment-method" value="card" class="accent-navy">
-                            <span>Debit / Credit Card</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="bg-bglight p-3 rounded-lg border border-gray-200 space-y-1 text-xs">
-                    <div class="flex justify-between text-gray-600"><span>Payable Amount:</span> <span id="checkout-amount" class="font-extrabold text-navy">₹0</span></div>
-                    <p class="text-[10px] text-gray-500">🔒 256-bit SSL Webhook verified transaction simulation.</p>
-                </div>
-
-                <button type="submit" id="pay-now-btn" class="w-full bg-gold hover:bg-gold-hover text-navy font-extrabold py-3 rounded-lg text-sm shadow-md transition-all">
-                    Pay Now & Download Files
-                </button>
-            </form>
+      <div class="container">
+        <h2 class="section-title">Product Categories</h2>
+        <p class="section-subtitle">Explore our professional resources tailored for creators, professionals, and students.</p>
+        
+        <div class="categories-grid">
+          <div class="category-card" onclick="switchView('catalogue', 'Books & eBooks')">
+            <i class="fa-solid fa-book"></i>
+            <h3>Books & eBooks</h3>
+            <p>AI books, educational guides, coloring books, and reference manuals.</p>
+          </div>
+          <div class="category-card" onclick="switchView('catalogue', 'Excel Templates')">
+            <i class="fa-solid fa-file-excel"></i>
+            <h3>Excel Templates</h3>
+            <p>MIS reports, automated workbooks, VBA macro tools, and trackers.</p>
+          </div>
+          <div class="category-card" onclick="switchView('catalogue', 'Power BI Dashboards')">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>Power BI Dashboards</h3>
+            <p>Business intelligence reports, sample datasets, and dashboard templates.</p>
+          </div>
+          <div class="category-card" onclick="switchView('catalogue', 'AI Guides & Toolkits')">
+            <i class="fa-solid fa-robot"></i>
+            <h3>AI Guides & Toolkits</h3>
+            <p>AI tutorials, prompt collections, practical workflows, and automation guides.</p>
+          </div>
         </div>
-    </div>
-
-    <!-- POST-PURCHASE DIGITAL DELIVERY PORTAL MODAL -->
-    <div id="delivery-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 modal-blur">
-        <div class="bg-surface rounded-2xl max-w-xl w-full p-6 md:p-8 shadow-2xl space-y-5 border border-gray-200 text-center">
-            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-
-            <div>
-                <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Payment Verified</span>
-                <h3 class="text-2xl font-extrabold text-navy mt-1">Order Confirmed!</h3>
-                <p class="text-xs text-gray-500 mt-1">Order ID: <span id="delivery-order-id" class="font-mono font-bold text-gray-800">SMB-849201</span></p>
-            </div>
-
-            <div class="bg-bglight rounded-xl p-4 text-left border border-gray-200 space-y-3">
-                <h4 class="text-xs font-bold text-navy uppercase tracking-wider">Your Digital Downloads</h4>
-                <div id="delivery-files-list" class="space-y-2">
-                    <!-- Populated dynamically with downloadable links -->
-                </div>
-            </div>
-
-            <div class="text-left text-xs text-gray-500 bg-amber-50 border border-amber-200 p-3 rounded-lg">
-                <i class="fa-solid fa-circle-info text-amber-600 mr-1"></i>
-                <strong>Download Note:</strong> Download links expire in 72 hours. A copy has been dispatched to <span id="delivery-email-confirm" class="font-bold text-gray-800"></span>.
-            </div>
-
-            <button onclick="closeModal('delivery-modal')" class="w-full bg-navy hover:bg-navy-dark text-white font-bold py-3 rounded-lg text-sm">
-                Close & Return to Store
-            </button>
-        </div>
-    </div>
-
-    <!-- FREE RESOURCES MODAL -->
-    <div id="free-resources-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 modal-blur">
-        <div class="bg-surface rounded-2xl max-w-2xl w-full p-6 md:p-8 shadow-2xl space-y-4 border border-gray-200 relative">
-            <button onclick="closeModal('free-resources-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
-            
-            <h3 class="text-xl font-extrabold text-navy flex items-center gap-2">
-                <i class="fa-solid fa-gift text-gold"></i> Free Digital Productivity Resources
-            </h3>
-            <p class="text-xs text-gray-500">Download complimentary cheat sheets and sample templates directly without payment.</p>
-
-            <div class="space-y-3 pt-2">
-                <div class="p-3 border border-gray-200 rounded-lg flex items-center justify-between hover:bg-gray-50">
-                    <div>
-                        <h4 class="font-bold text-xs text-navy">Top 50 ChatGPT Prompts for Business</h4>
-                        <p class="text-[11px] text-gray-500">PDF Guide • 2.4 MB</p>
-                    </div>
-                    <button onclick="downloadSampleFile('ChatGPT_Top_50_Prompts.pdf')" class="bg-gold text-navy font-bold text-xs px-3 py-1.5 rounded hover:bg-gold-hover">Download</button>
-                </div>
-
-                <div class="p-3 border border-gray-200 rounded-lg flex items-center justify-between hover:bg-gray-50">
-                    <div>
-                        <h4 class="font-bold text-xs text-navy">Excel Shortcuts & Formulas Cheat Sheet</h4>
-                        <p class="text-[11px] text-gray-500">PDF Document • 1.1 MB</p>
-                    </div>
-                    <button onclick="downloadSampleFile('Excel_Formula_CheatSheet.pdf')" class="bg-gold text-navy font-bold text-xs px-3 py-1.5 rounded hover:bg-gold-hover">Download</button>
-                </div>
-
-                <div class="p-3 border border-gray-200 rounded-lg flex items-center justify-between hover:bg-gray-50">
-                    <div>
-                        <h4 class="font-bold text-xs text-navy">Mini Financial Tracker Template</h4>
-                        <p class="text-[11px] text-gray-500">Excel Workbook (.xlsx) • 850 KB</p>
-                    </div>
-                    <button onclick="downloadSampleFile('Mini_Tracker_Sample.xlsx')" class="bg-gold text-navy font-bold text-xs px-3 py-1.5 rounded hover:bg-gold-hover">Download</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ABOUT MODAL -->
-    <div id="about-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 modal-blur">
-        <div class="bg-surface rounded-2xl max-w-2xl w-full p-6 md:p-8 shadow-2xl space-y-4 border border-gray-200 relative">
-            <button onclick="closeModal('about-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
-            <h3 class="text-xl font-extrabold text-navy">About Smart AI Books</h3>
-            <p class="text-xs text-gray-600 leading-relaxed">
-                Smart AI Books (<strong>smartaibooks.in</strong>) is a dedicated digital learning hub providing practical, actionable knowledge assets for students, working professionals, creators, and business leaders.
-            </p>
-            <p class="text-xs text-gray-600 leading-relaxed">
-                We eliminate corporate clutter by publishing clear step-by-step AI guides, pre-formatted Excel MIS reporting tools, VBA macro scripts, and production-ready Power BI dashboard templates.
-            </p>
-            <div class="bg-bglight p-4 rounded-xl border border-gray-200 text-xs space-y-1">
-                <p class="font-bold text-navy">Brand Promise:</p>
-                <p class="text-gray-600">Learn Smarter. Work Faster. Create More.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- CONTACT MODAL -->
-    <div id="contact-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 modal-blur">
-        <div class="bg-surface rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4 border border-gray-200 relative">
-            <button onclick="closeModal('contact-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
-            <h3 class="text-xl font-extrabold text-navy">Contact Customer Support</h3>
-            <p class="text-xs text-gray-500">Questions about your purchase or download assistance? Send us a message.</p>
-            <form onsubmit="handleContactSubmit(event)" class="space-y-3 text-xs">
-                <div>
-                    <label class="block font-bold text-gray-700 mb-1">Your Name</label>
-                    <input type="text" required class="w-full border border-gray-300 rounded p-2">
-                </div>
-                <div>
-                    <label class="block font-bold text-gray-700 mb-1">Your Email</label>
-                    <input type="email" required class="w-full border border-gray-300 rounded p-2">
-                </div>
-                <div>
-                    <label class="block font-bold text-gray-700 mb-1">Message / Query</label>
-                    <textarea rows="3" required class="w-full border border-gray-300 rounded p-2"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-navy text-white font-bold py-2.5 rounded hover:bg-navy-dark">Send Message</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- LEGAL MODALS (Privacy, Terms, Refund, License) -->
-    <div id="privacy-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 modal-blur">
-        <div class="bg-surface rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-3 border border-gray-200 relative max-h-[85vh] overflow-y-auto">
-            <button onclick="closeModal('privacy-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
-            <h3 class="text-lg font-bold text-navy">Privacy Policy</h3>
-            <p class="text-xs text-gray-600 leading-relaxed">At smartaibooks.in, we prioritize your data security. We collect minimal information strictly needed to process digital orders and deliver files. We never sell or share customer details with third parties.</p>
-        </div>
-    </div>
-
-    <div id="terms-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 modal-blur">
-        <div class="bg-surface rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-3 border border-gray-200 relative max-h-[85vh] overflow-y-auto">
-            <button onclick="closeModal('terms-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
-            <h3 class="text-lg font-bold text-navy">Terms and Conditions</h3>
-            <p class="text-xs text-gray-600 leading-relaxed">By accessing smartaibooks.in, you agree to comply with our digital use policies. Products purchased are intended for single-user personal or organizational use unless explicitly extended by a commercial license.</p>
-        </div>
-    </div>
-
-    <div id="refund-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 modal-blur">
-        <div class="bg-surface rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-3 border border-gray-200 relative max-h-[85vh] overflow-y-auto">
-            <button onclick="closeModal('refund-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
-            <h3 class="text-lg font-bold text-navy">Refund & Cancellation Policy</h3>
-            <p class="text-xs text-gray-600 leading-relaxed">Due to the non-returnable nature of downloadable digital assets, refunds are granted exclusively in cases of corrupted files that our technical team cannot remediate within 7 business days.</p>
-        </div>
-    </div>
-
-    <div id="license-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 modal-blur">
-        <div class="bg-surface rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-3 border border-gray-200 relative max-h-[85vh] overflow-y-auto">
-            <button onclick="closeModal('license-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
-            <h3 class="text-lg font-bold text-navy">Digital Product License</h3>
-            <p class="text-xs text-gray-600 leading-relaxed">All templates, workbooks, guides, and datasets published on smartaibooks.in are copyrighted. Redistribution, public re-hosting, or resale of raw source files is strictly prohibited.</p>
-        </div>
-    </div>
-
-    <!-- STORE ADMIN / OWNER MAINTENANCE MODAL -->
-    <div id="admin-guide-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 modal-blur">
-        <div class="bg-surface rounded-2xl max-w-3xl w-full p-6 md:p-8 shadow-2xl space-y-4 border border-gray-200 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
-            <button onclick="closeModal('admin-guide-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
-            
-            <div class="border-b pb-3">
-                <h3 class="text-xl font-extrabold text-navy flex items-center gap-2">
-                    <i class="fa-solid fa-sliders text-gold"></i> Store Owner Dashboard & Setup Guide
-                </h3>
-                <p class="text-xs text-gray-500">Non-technical guide for maintaining smartaibooks.in on Netlify / Cloudflare Pages.</p>
-            </div>
-
-            <div class="space-y-4 text-xs">
-                <div class="bg-blue-50 border border-blue-200 p-3 rounded-lg text-navy">
-                    <strong>1. Hosting Setup:</strong> Upload this `index.html` file to Netlify, Cloudflare Pages, or GitHub Pages. Point domain DNS `smartaibooks.in` to CNAME/A records.
-                </div>
-
-                <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg text-amber-900">
-                    <strong>2. Live Payment Setup (Razorpay / Instamojo):</strong> Replace the checkout handler in Javascript with your live API keys when ready for production transactions.
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-gray-800 mb-1">3. Live Product Data JSON Editor:</h4>
-                    <p class="text-gray-500 mb-2">Edit product list directly below or copy to update the catalogue:</p>
-                    <textarea id="admin-json-editor" rows="8" class="w-full font-mono text-[11px] p-2 bg-gray-900 text-green-400 rounded-lg"></textarea>
-                    <button onclick="saveAdminJson()" class="mt-2 bg-navy text-white font-bold px-4 py-2 rounded hover:bg-navy-dark">Update Store Products</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT APP LOGIC -->
-    <script>
-        // MASTER CATALOGUE SAMPLE DATA
-       const products = [
-  {
-    id: 1,
-    title: "ChatGPT Made Simple",
-    category: "Books & eBooks",
-    subCategory: "Computer & AI",
-    fileType: "PDF",
-    level: "Beginner",
-    price: 499,
-    description: "A practical guide to understanding and leveraging ChatGPT for everyday productivity.",
-    cover: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&auto=format&fit=crop&q=60"
-  },
-  {
-    id: 2,
-    title: "Silambam: The Ancient Martial Art",
-    category: "Books & eBooks",
-    subCategory: "Martial Arts",
-    fileType: "PDF",
-    level: "Intermediate",
-    price: 599,
-    description: "Comprehensive guide exploring the history, footwork, and weapon techniques of Silambam.",
-    cover: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=500&auto=format&fit=crop&q=60"
-  },
-         {
-    id: 3,
-    title: "Vinayagar Agaval",
-    category: "Books & eBooks",
-    subCategory: "Martial Arts",
-    fileType: "PDF",
-    level: "Intermediate",
-    price: 599,
-    description: "Comprehensive guide exploring the history, footwork, and weapon techniques of Silambam.",
-    cover: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=500&auto=format&fit=crop&q=60"
-  },
-
-  {
-    id: 4,
-    title: "Mind",
-    category: "Books & eBooks",
-    subCategory: "Martial Arts",
-    fileType: "PDF",
-    level: "Intermediate",
-    price: 599,
-    description: "Comprehensive guide exploring the history, footwork, and weapon techniques of Silambam.",
-    cover: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=500&auto=format&fit=crop&q=60"
-  },
-  // Add more products with respective subCategories...
-];
-
-        // CART STATE
-
-
-      
-        let cart = [];
-
-        // INITIALIZATION
-        window.onload = function() {
-            renderProducts();
-            updateCartUI();
-            document.getElementById('admin-json-editor').value = JSON.stringify(products, null, 2);
-        };
-
-        // NAVIGATION & SCROLLING
-        function navigateTo(page) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function scrollToCatalogue() {
-            document.getElementById('catalogue-section').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        // PRODUCT RENDERING WITH FILTERS & SORT
-<div class="filter-group">
-  <label for="subCategoryFilter" style="font-weight: 600; color: #123758; display: block; margin-bottom: 6px;">Book Genre / Subtopic</label>
-  <select id="subCategoryFilter" class="filter-select" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-    <option value="all">All Book Topics</option>
-    <option value="Spiritual">Spiritual</option>
-    <option value="Psychology">Psychology</option>
-    <option value="Computer & AI">Computer & AI</option>
-    <option value="Children's">Children's</option>
-    <option value="Adults">Adults</option>
-    <option value="Sports">Sports</option>
-    <option value="Martial Arts">Martial Arts</option>
-    <option value="Others">Others</option>
-  </select>
-</div>
-
-      
-        function renderProducts() {
-            const grid = document.getElementById('product-grid');
-            const emptyState = document.getElementById('empty-state');
-            grid.innerHTML = '';
-
-            // Selected Category
-            const selectedCat = document.querySelector('input[name="filter-category"]:checked')?.value || 'all';
-
-            // Selected Formats
-            const selectedFormats = Array.from(document.querySelectorAll('.filter-format:checked')).map(cb => cb.value);
-
-            // Selected Level
-            const selectedLevel = document.getElementById('filter-level').value;
-
-            // Selected Max Price
-            const maxPrice = parseInt(document.getElementById('filter-price').value);
-
-            // Global Search Keyword
-            const searchKw = (document.getElementById('global-search-input').value || document.getElementById('mobile-search-input').value || '').toLowerCase();
-
-            // Filter logic
-            let filtered = products.filter(p => {
-                if (selectedCat !== 'all' && p.category !== selectedCat) return false;
-                if (selectedFormats.length > 0 && !selectedFormats.includes(p.format)) return false;
-                if (selectedLevel !== 'all' && p.skillLevel !== selectedLevel) return false;
-                if (p.price > maxPrice) return false;
-                if (searchKw && !p.title.toLowerCase().includes(searchKw) && !p.shortDesc.toLowerCase().includes(searchKw)) return false;
-                return true;
-            });
-
-            // Sorting logic
-            const sortBy = document.getElementById('sort-select').value;
-            if (sortBy === 'price-low') filtered.sort((a, b) => a.price - b.price);
-            if (sortBy === 'price-high') filtered.sort((a, b) => b.price - a.price);
-
-            if (filtered.length === 0) {
-                emptyState.classList.remove('hidden');
-            } else {
-                emptyState.classList.add('hidden');
-                filtered.forEach(p => {
-                    grid.appendChild(createProductCard(p));
-                });
-            }
-        }
-
-        function createProductCard(p) {
-            const card = document.createElement('div');
-            card.className = "bg-surface rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md hover:border-gold transition-all flex flex-col justify-between";
-            
-            // Format icon mapping
-            let iconClass = "fa-file";
-            let formatBg = "bg-gray-100 text-gray-700";
-            if (p.format === '.pdf') { iconClass = "fa-file-pdf"; formatBg = "bg-red-50 text-red-600"; }
-            if (p.format === '.xlsx' || p.format === '.xlsm') { iconClass = "fa-file-excel"; formatBg = "bg-emerald-50 text-emerald-700"; }
-            if (p.format === '.pbix') { iconClass = "fa-chart-column"; formatBg = "bg-amber-50 text-amber-600"; }
-            if (p.format === '.zip') { iconClass = "fa-file-zipper"; formatBg = "bg-purple-50 text-purple-600"; }
-
-            card.innerHTML = `
-                <div class="p-5 space-y-3">
-                    <div class="flex justify-between items-start">
-                        <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-blue-50 text-navy">${p.category}</span>
-                        ${p.badge ? `<span class="text-[10px] font-bold bg-gold text-navy px-2 py-0.5 rounded-full">${p.badge}</span>` : ''}
-                    </div>
-
-                    <div class="flex items-center gap-3 pt-1">
-                        <div class="w-10 h-10 rounded-lg ${formatBg} flex items-center justify-center font-bold text-lg flex-shrink-0">
-                            <i class="fa-solid ${iconClass}"></i>
-                        </div>
-                        <div>
-                            <h3 onclick="openProductDetail('${p.id}')" class="font-bold text-sm text-gray-900 hover:text-navy cursor-pointer line-clamp-1">${p.title}</h3>
-                            <span class="text-[11px] text-gray-500 font-medium">Format: ${p.format} • ${p.skillLevel}</span>
-                        </div>
-                    </div>
-
-                    <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">${p.shortDesc}</p>
-                </div>
-
-                <div class="p-4 bg-bglight border-t border-gray-100 flex items-center justify-between gap-2">
-                    <div>
-                        <span class="text-xs text-gray-400 block leading-none">Price</span>
-                        <span class="text-base font-extrabold text-navy">₹${p.price}</span>
-                    </div>
-
-                    <div class="flex gap-2">
-                        <button onclick="openProductDetail('${p.id}')" class="text-xs font-semibold px-3 py-2 bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50">
-                            Details
-                        </button>
-                        <button onclick="addToCart('${p.id}')" class="text-xs font-bold px-3 py-2 bg-navy hover:bg-navy-dark text-white rounded-lg transition-colors flex items-center gap-1">
-                            <i class="fa-solid fa-cart-plus text-gold"></i> Buy
-                        </button>
-                    </div>
-                </div>
-            `;
-            return card;
-        }
-
-        // FILTER CONTROL HELPERS
-        function updatePriceLabel(val) {
-            document.getElementById('price-val').innerText = '₹' + val;
-        }
-
-        function filterByCategory(cat) {
-            const radio = document.querySelector(`input[name="filter-category"][value="${cat}"]`);
-            if (radio) radio.checked = true;
-            renderProducts();
-            scrollToCatalogue();
-        }
-
-        function resetFilters() {
-            document.querySelector('input[name="filter-category"][value="all"]').checked = true;
-            document.querySelectorAll('.filter-format').forEach(cb => cb.checked = false);
-            document.getElementById('filter-level').value = 'all';
-            document.getElementById('filter-price').value = 1000;
-            updatePriceLabel(1000);
-            document.getElementById('global-search-input').value = '';
-            document.getElementById('mobile-search-input').value = '';
-            renderProducts();
-        }
-
-        function handleGlobalSearch(e) {
-            renderProducts();
-        }
-
-        function handleMobileSearch(e) {
-            renderProducts();
-        }
-
-        // PRODUCT DETAIL MODAL
-        function openProductDetail(id) {
-            const p = products.find(item => item.id === id);
-            if (!p) return;
-
-            const modalBody = document.getElementById('product-modal-body');
-            modalBody.innerHTML = `
-                <div class="space-y-6">
-                    <div class="flex flex-col sm:flex-row gap-4 justify-between items-start border-b border-gray-200 pb-4">
-                        <div>
-                            <span class="text-xs font-bold text-gold uppercase tracking-wider">${p.category}</span>
-                            <h2 class="text-2xl font-extrabold text-navy">${p.title}</h2>
-                            <p class="text-xs text-gray-500 mt-1">Skill Level: <strong>${p.skillLevel}</strong> | File Format: <strong>${p.format}</strong></p>
-                        </div>
-                        <div class="text-right">
-                            <span class="text-2xl font-extrabold text-navy">₹${p.price}</span>
-                            <p class="text-[10px] text-emerald-600 font-semibold">Instant Download</p>
-                        </div>
-                    </div>
-
-                    ${p.macroWarning ? `
-                        <div class="bg-amber-50 border border-amber-300 p-3 rounded-lg text-xs text-amber-900 flex items-start gap-2">
-                            <i class="fa-solid fa-triangle-exclamation text-amber-600 text-sm mt-0.5"></i>
-                            <div><strong>Macro Compatibility Note:</strong> This template contains automated VBA scripts. Microsoft Excel on Windows Desktop is required to run macros.</div>
-                        </div>
-                    ` : ''}
-
-                    ${p.pbixNotice ? `
-                        <div class="bg-blue-50 border border-blue-300 p-3 rounded-lg text-xs text-blue-900 flex items-start gap-2">
-                            <i class="fa-solid fa-info-circle text-blue-600 text-sm mt-0.5"></i>
-                            <div><strong>Power BI Requirement:</strong> Microsoft Power BI Desktop (free version) is required to open and customize .pbix files.</div>
-                        </div>
-                    ` : ''}
-
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-sm text-navy">Description</h4>
-                        <p class="text-xs text-gray-600 leading-relaxed">${p.description}</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-bglight p-4 rounded-xl border border-gray-200 text-xs">
-                        <div>
-                            <h4 class="font-bold text-navy mb-2"><i class="fa-solid fa-box-open text-gold mr-1"></i> What is Included:</h4>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1">
-                                ${p.included.map(i => `<li>${i}</li>`).join('')}
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-navy mb-2"><i class="fa-solid fa-user-check text-gold mr-1"></i> Target Audience:</h4>
-                            <p class="text-gray-600">${p.whoShouldUse}</p>
-                            <h4 class="font-bold text-navy mt-3 mb-1"><i class="fa-solid fa-laptop text-gold mr-1"></i> Compatibility:</h4>
-                            <p class="text-gray-600">${p.compatibility}</p>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                        <button onclick="addToCart('${p.id}'); closeModal('product-modal'); toggleCartDrawer();" class="flex-1 bg-gold hover:bg-gold-hover text-navy font-bold py-3 rounded-lg text-xs transition-colors flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart & Checkout
-                        </button>
-                        <button onclick="closeModal('product-modal')" class="px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-lg text-xs hover:bg-gray-50">
-                            Continue Browsing
-                        </button>
-                    </div>
-                </div>
-            `;
-
-            openModal('product-modal');
-        }
-
-        // CART DRAWER ACTIONS
-        function toggleCartDrawer() {
-            const drawer = document.getElementById('cart-drawer');
-            const backdrop = document.getElementById('cart-drawer-backdrop');
-            const isHidden = drawer.classList.contains('translate-x-full');
-
-            if (isHidden) {
-                drawer.classList.remove('translate-x-full');
-                backdrop.classList.remove('hidden');
-            } else {
-                drawer.classList.add('translate-x-full');
-                backdrop.classList.add('hidden');
-            }
-        }
-
-        function addToCart(id) {
-            const p = products.find(item => item.id === id);
-            if (!p) return;
-
-            const existing = cart.find(item => item.id === id);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ ...p, qty: 1 });
-            }
-
-            updateCartUI();
-        }
-
-        function removeFromCart(id) {
-            cart = cart.filter(item => item.id !== id);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            const container = document.getElementById('cart-items-container');
-            const badge = document.getElementById('cart-badge');
-            const subtotalEl = document.getElementById('cart-subtotal');
-            const totalEl = document.getElementById('cart-total');
-
-            const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
-            const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-
-            badge.innerText = totalItems;
-            if (totalItems > 0) {
-                badge.classList.remove('hidden');
-            } else {
-                badge.classList.add('hidden');
-            }
-
-            subtotalEl.innerText = '₹' + totalPrice;
-            totalEl.innerText = '₹' + totalPrice;
-
-            if (cart.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-12 text-gray-400 space-y-2">
-                        <i class="fa-solid fa-cart-flatbed text-4xl mb-2"></i>
-                        <p class="text-xs">Your shopping cart is empty.</p>
-                    </div>
-                `;
-            } else {
-                container.innerHTML = '';
-                cart.forEach(item => {
-                    const itemEl = document.createElement('div');
-                    itemEl.className = "flex items-center justify-between p-3 bg-bglight rounded-lg border border-gray-200 text-xs";
-                    itemEl.innerHTML = `
-                        <div class="space-y-0.5">
-                            <h4 class="font-bold text-navy line-clamp-1">${item.title}</h4>
-                            <span class="text-gray-500">${item.format} • ₹${item.price}</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <span class="font-extrabold text-navy">₹${item.price * item.qty}</span>
-                            <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </div>
-                    `;
-                    container.appendChild(itemEl);
-                });
-            }
-        }
-
-        function proceedToCheckout() {
-            if (cart.length === 0) {
-                alert("Your cart is empty. Please add products to proceed.");
-                return;
-            }
-            const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-            document.getElementById('checkout-amount').innerText = '₹' + totalPrice;
-            toggleCartDrawer();
-            openModal('checkout-modal');
-        }
-
-        // SIMULATED PAYMENTS & DIGITAL DELIVERY WORKFLOW
-        function processPayment(e) {
-            e.preventDefault();
-            const payBtn = document.getElementById('pay-now-btn');
-            const custName = document.getElementById('cust-name').value;
-            const custEmail = document.getElementById('cust-email').value;
-
-            payBtn.disabled = true;
-            payBtn.innerText = "Verifying Transaction...";
-
-            setTimeout(() => {
-                payBtn.disabled = false;
-                payBtn.innerText = "Pay Now & Download Files";
-
-                const orderId = 'SMB-' + Math.floor(100000 + Math.random() * 900000);
-                document.getElementById('delivery-order-id').innerText = orderId;
-                document.getElementById('delivery-email-confirm').innerText = custEmail;
-
-                const filesList = document.getElementById('delivery-files-list');
-                filesList.innerHTML = '';
-
-                cart.forEach(item => {
-                    item.downloads.forEach(fileName => {
-                        const fileRow = document.createElement('div');
-                        fileRow.className = "flex items-center justify-between p-2.5 bg-white rounded border border-gray-200 text-xs";
-                        fileRow.innerHTML = `
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-file-arrow-down text-gold"></i>
-                                <span class="font-bold text-navy">${fileName}</span>
-                            </div>
-                            <button onclick="downloadSampleFile('${fileName}')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] px-3 py-1 rounded">
-                                Download File
-                            </button>
-                        `;
-                        filesList.appendChild(fileRow);
-                    });
-                });
-
-                closeModal('checkout-modal');
-                openModal('delivery-modal');
-                cart = [];
-                updateCartUI();
-            }, 1200);
-        }
-
-        function downloadSampleFile(fileName) {
-            // Generate mock file content as blob for digital download simulation
-            const dummyContent = `Smart AI Books (smartaibooks.in)\nDigital Asset: ${fileName}\nOrder Verified: TRUE\nLicense: Single User License\nThank you for learning smarter and working faster!`;
-            const blob = new Blob([dummyContent], { type: 'text/plain' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = fileName;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-        }
-
-        // MODAL MANAGEMENT HELPERS
-        function openModal(id) {
-            document.getElementById(id).classList.remove('hidden');
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).classList.add('hidden');
-        }
-
-        function toggleFaq(id) {
-            const content = document.getElementById(id);
-            const icon = document.getElementById('icon-' + id);
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
-            } else {
-                content.classList.add('hidden');
-                icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
-            }
-        }
-
-        // NEWSLETTER & CONTACT HANDLERS
-        function handleNewsletter(e) {
-            e.preventDefault();
-            alert("Thank you for subscribing! Free prompt sheets will be sent to your inbox.");
-            e.target.reset();
-        }
-
-        function handleContactSubmit(e) {
-            e.preventDefault();
-            alert("Your support request has been logged. Our team will contact you within 2 hours.");
-            closeModal('contact-modal');
-            e.target.reset();
-        }
-
-        // ADMIN JSON EDITOR DATA SYNC
-        function saveAdminJson() {
-            try {
-                const updated = JSON.parse(document.getElementById('admin-json-editor').value);
-                products = updated;
-                renderProducts();
-                alert("Store product catalogue updated successfully!");
-                closeModal('admin-guide-modal');
-            } catch (err) {
-                alert("Invalid JSON format. Please check syntax.");
-            }
-        }
-    </script>
-</body>
-</html>
