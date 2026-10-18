@@ -928,11 +928,7 @@
 
   <!-- Product Detail Modal -->
 <!-- Inside openProductDetail function -->
-<div style="margin-bottom: 16px;">
-  <a href="${product.sampleFile || 'samples/Text_AI_Book.pdf'}" target="_blank" class="btn btn-outline btn-sm" style="color: var(--navy); border-color: var(--navy);">
-    <i class="fa-solid fa-eye" style="margin-right: 6px;"></i> Preview Free Sample Pages
-  </a>
-</div>
+
 
     <div class="modal-overlay" id="productModal">
     <div class="modal-container">
@@ -940,6 +936,14 @@
         <h2 id="modalProductTitle">Product Details</h2>
         <button class="modal-close" onclick="closeModal('productModal')"><i class="fa-solid fa-xmark"></i></button>
       </div>
+
+<div style="margin-bottom: 16px;">
+  <a href="${product.sampleFile || 'samples/Text_AI_Book.pdf'}" target="_blank" class="btn btn-outline btn-sm" style="color: var(--navy); border-color: var(--navy);">
+    <i class="fa-solid fa-eye" style="margin-right: 6px;"></i> Preview Free Sample Pages
+  </a>
+</div>
+
+      
       <div class="modal-body" id="modalProductContent">
         <!-- Populated via JS -->
       </div>
