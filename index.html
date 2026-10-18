@@ -1030,48 +1030,42 @@
   <script>
     // Master Product Catalogue Dataset with Subcategories
     let products = [
-      {
-        id: 1,
-        title: "ChatGPT Made Simple",
-        category: "Books & eBooks",
-        subCategory: "Computer AI",
-        fileType: "PDF",
-        level: "Beginner",
-        price: 499,
-        cover: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&auto=format&fit=crop&q=60",
-        description: "A practical guide to understanding and leveraging ChatGPT for everyday professional productivity and creative writing.",
-        includes: "Complete 180-page PDF guide + 50 ready-to-use prompt templates.",
-        compatibility: "Any PDF reader or mobile device.",
-        license: "Single-user personal & professional license."
-      },
-      {
-        id: 2,
-        title: "Mastering Grok",
-        category: "Books & eBooks",
-        subCategory: "Computer AI",
-        fileType: "PDF",
-        level: "Intermediate",
-        price: 599,
-        cover: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60",
-        description: "Deep dive into advanced AI interactions, real-time knowledge synthesis, and practical workflow automation.",
-        includes: "Comprehensive PDF eBook + Companion code snippets.",
-        compatibility: "Compatible with all e-readers and PDF viewers.",
-        license: "Single-user personal license."
-      },
-      {
-        id: 3,
-        title: "Silambam: The Ancient Martial Art",
-        category: "Books & eBooks",
-        subCategory: "Martial Arts",
-        fileType: "PDF",
-        level: "Intermediate",
-        price: 649,
-        cover: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=500&auto=format&fit=crop&q=60",
-        description: "Explore the history, footwork, weapon drills, and regional styles of the traditional martial art of Silambam.",
-        includes: "Illustrated guide book in high-resolution PDF format.",
-        compatibility: "PDF Reader required.",
-        license: "Personal reading license."
-      },
+     {
+  id: 1,
+  title: "ChatGPT Made Simple",
+  category: "Books & eBooks",
+  subCategory: "Computer AI",
+  fileType: "PDF",
+  level: "Beginner",
+  price: 499,
+  cover: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&auto=format&fit=crop&q=60",
+  description: "A practical guide to understanding and leveraging ChatGPT for everyday professional productivity.",
+  sampleFile: "samples/Text_AI_Book.pdf" // <--- Points to your uploaded PDF
+},
+{
+  id: 2,
+  title: "Mastering Grok",
+  category: "Books & eBooks",
+  subCategory: "Computer AI",
+  fileType: "PDF",
+  level: "Intermediate",
+  price: 599,
+  cover: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60",
+  description: "Deep dive into advanced AI interactions and code generation workflows.",
+  sampleFile: "samples/Code_AI_Book.pdf" // <--- Points to your uploaded PDF
+},
+{
+  id: 3,
+  title: "AI Voice Synthesis Guide",
+  category: "Books & eBooks",
+  subCategory: "Computer AI",
+  fileType: "PDF",
+  level: "Advanced",
+  price: 649,
+  cover: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&auto=format&fit=crop&q=60",
+  description: "Comprehensive manual on neural text-to-speech architectures and voice cloning.",
+  sampleFile: "samples/Audio_AI_Book.pdf" // <--- Points to your uploaded PDF
+}
       {
         id: 4,
         title: "Mindful Peace: Spiritual Awakening",
