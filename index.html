@@ -186,6 +186,7 @@
         includes: "Use the actual contents, edition and format from your published listing.",
         compatibility: "Paperback or digital format, depending on the available edition.",
         purchaseUrl: "",
+        sampleFile: "samples/Text_AI_Book.pdf",
         detailNote: "Add your verified Amazon KDP or digital product link before publishing this listing."
       },
       {
@@ -203,7 +204,26 @@
         includes: "Update with the actual contents, edition and format.",
         compatibility: "Depends on the edition being sold.",
         purchaseUrl: "",
+        sampleFile: "samples/Code_AI_Book.pdf",
         detailNote: "Add the verified product listing URL and correct edition details."
+      },
+      {
+        id: "ai-voice-synthesis-guide",
+        title: "AI Voice Synthesis Guide",
+        category: "Books & eBooks",
+        format: "PDF / eBook",
+        level: "Advanced",
+        status: "Update listing",
+        price: null,
+        priceLabel: "See book listing",
+        coverStyle: "book",
+        icon: "fa-wave-square",
+        description: "A learning guide about AI voice and text-to-speech workflows.",
+        includes: "Confirm the actual edition and included materials before publishing.",
+        compatibility: "PDF reader for digital editions.",
+        purchaseUrl: "",
+        sampleFile: "samples/Audio_AI_Book.pdf",
+        detailNote: "Add the verified purchase link and confirm that this sample PDF is the correct preview."
       },
       {
         id: "sacred-abodes",
@@ -407,7 +427,7 @@
     function openProduct(id) {
       const p = products.find(x=>x.id===id); if(!p)return;
       $("modalTitle").textContent = p.title;
-      $("modalContent").innerHTML = `<div class="detail-layout"><div class="detail-art">${artHtml(p)}</div><div><p><strong>${escapeHtml(p.category)}</strong> · ${escapeHtml(p.format)} · ${escapeHtml(p.level)}</p><h3>${escapeHtml(formatPrice(p))}</h3><p>${escapeHtml(p.description)}</p><h3>What's included</h3><p>${escapeHtml(p.includes)}</p><h3>Compatibility</h3><p>${escapeHtml(p.compatibility)}</p><div class="notice"><strong>Availability:</strong> ${escapeHtml(p.status)}. ${escapeHtml(p.detailNote || "Purchase details need to be confirmed.")}</div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">${p.purchaseUrl?`<a class="btn btn-gold" href="${escapeHtml(p.purchaseUrl)}" target="_blank" rel="noopener noreferrer">View purchase page <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`:`<button class="btn btn-navy" id="detailEnquire">Add to enquiry list</button>`}</div></div></div>`;
+      $("modalContent").innerHTML = `<div class="detail-layout"><div class="detail-art">${artHtml(p)}</div><div><p><strong>${escapeHtml(p.category)}</strong> · ${escapeHtml(p.format)} · ${escapeHtml(p.level)}</p><h3>${escapeHtml(formatPrice(p))}</h3><p>${escapeHtml(p.description)}</p><h3>What's included</h3><p>${escapeHtml(p.includes)}</p><h3>Compatibility</h3><p>${escapeHtml(p.compatibility)}</p><div class="notice"><strong>Availability:</strong> ${escapeHtml(p.status)}. ${escapeHtml(p.detailNote || "Purchase details need to be confirmed.")}</div>${p.sampleFile ? `<p style="margin-top:16px"><a class="btn btn-light" href="${escapeHtml(p.sampleFile)}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-eye"></i> Preview Free Sample PDF</a></p>` : ""}<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">${p.purchaseUrl?`<a class="btn btn-gold" href="${escapeHtml(p.purchaseUrl)}" target="_blank" rel="noopener noreferrer">View purchase page <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`:`<button class="btn btn-navy" id="detailEnquire">Add to enquiry list</button>`}</div></div></div>`;
       if (!p.purchaseUrl) $("detailEnquire").addEventListener("click",()=>{addToCart(id);closeModal();});
       openModal();
     }
