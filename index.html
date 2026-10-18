@@ -825,102 +825,59 @@
     <!-- JAVASCRIPT APP LOGIC -->
     <script>
         // MASTER CATALOGUE SAMPLE DATA
-        let products = [
-            {
-                id: "prod-1",
-                title: "ChatGPT Made Simple",
-                category: "Books & eBooks",
-                format: ".pdf",
-                price: 299,
-                badge: "Bestseller",
-                skillLevel: "Beginner",
-                shortDesc: "Master practical prompt engineering and daily workflow automation with step-by-step examples.",
-                description: "ChatGPT Made Simple is your definitive guide to leveraging OpenAI for productivity. Learn how to write effective prompts, summarize long documents, create automated email responses, and build customized AI assistants.",
-                included: ["120-Page PDF eBook", "100+ Ready Prompt Collection", "Cheat Sheet PDF"],
-                whoShouldUse: "Professionals, students, copywriters, and freelancers wanting to work faster.",
-                compatibility: "Any device with a PDF Reader (Adobe Acrobat, Chrome, Mobile).",
-                downloads: ["ChatGPT_Made_Simple_eBook.pdf", "Prompt_Bank_Bonus.pdf"]
-            },
-            {
-                id: "prod-2",
-                title: "Mastering Grok & DeepSeek",
-                category: "Books & eBooks",
-                format: ".pdf",
-                price: 349,
-                badge: "New Release",
-                skillLevel: "Intermediate",
-                shortDesc: "Unlock next-generation open AI models for complex analysis and rapid reasoning workflows.",
-                description: "Explore advanced reasoning AI models. Learn how to construct multi-step prompts, verify analytical logic, and integrate open-weight AI tools into business workflows.",
-                included: ["Full PDF Guide", "Prompt Templates", "Reasoning Workflow Diagrams"],
-                whoShouldUse: "Data analysts, researchers, and AI enthusiasts.",
-                compatibility: "Standard PDF viewable on Windows, Mac, iOS, Android.",
-                downloads: ["Mastering_Grok_Guide.pdf"]
-            },
-            {
-                id: "prod-3",
-                title: "Excel MIS Reporting Toolkit",
-                category: "Excel Templates",
-                format: ".xlsm",
-                price: 499,
-                badge: "Top Rated",
-                skillLevel: "Intermediate",
-                shortDesc: "Automated executive dashboard workbook with automated VBA data cleaning macro.",
-                description: "Transform raw monthly data into polished executive MIS reports in seconds. Includes dynamic charts, variance analysis macros, and automatic email export script.",
-                included: ["Macro-Enabled Excel File (.xlsm)", "Sample Data Sheet", "VBA Unblock Instructions PDF"],
-                whoShouldUse: "MIS Executives, Finance Managers, Accountants, and Business Analysts.",
-                compatibility: "Microsoft Excel 2016 or newer (Windows Desktop required for VBA macros).",
-                macroWarning: true,
-                downloads: ["MIS_Reporting_Toolkit_v2.xlsm", "VBA_Setup_Guide.pdf"]
-            },
-            {
-                id: "prod-4",
-                title: "Excel VBA Automation Templates",
-                category: "Excel Templates",
-                format: ".zip",
-                price: 599,
-                badge: "Popular",
-                skillLevel: "Advanced",
-                shortDesc: "Collection of 25 ready-to-use VBA scripts for file merging, PDF exports, and auto-emails.",
-                description: "Stop repeating tedious manual spreadsheet work. Copy-paste these pre-tested VBA code snippets directly into your workbooks.",
-                included: ["25 .bas Code Files", "Demo Workbook", "VBA User Handbook PDF"],
-                whoShouldUse: "Power Excel Users, Operations Leads, and Data Engineers.",
-                compatibility: "Desktop Excel on Microsoft Windows.",
-                downloads: ["VBA_Automation_Pack.zip"]
-            },
-            {
-                id: "prod-5",
-                title: "Power BI Business Dashboard Pack",
-                category: "Power BI Dashboards",
-                format: ".pbix",
-                price: 699,
-                badge: "Essential",
-                skillLevel: "Intermediate",
-                shortDesc: "3 Interactive PBIX dashboard templates for Sales, HR, and Financial KPI tracking.",
-                description: "Comprehensive Power BI reports featuring custom DAX measures, mobile layout optimization, drill-through pages, and clean color themes.",
-                included: ["3 Master .pbix Template Files", "Sample Datasets (.xlsx)", "Color Theme JSONs"],
-                whoShouldUse: "BI Developers, Business Owners, and Data Analysts.",
-                compatibility: "Requires free Microsoft Power BI Desktop installed on Windows.",
-                pbixNotice: true,
-                downloads: ["PowerBI_Business_Pack.pbix", "Sample_Datasets.xlsx"]
-            },
-            {
-                id: "prod-6",
-                title: "AI Tools & Prompt Handbook",
-                category: "AI Guides & Toolkits",
-                format: ".pdf",
-                price: 399,
-                badge: "Value Pack",
-                skillLevel: "Beginner",
-                shortDesc: "Curated directory of 50+ AI productivity tools across image generation, code, and text.",
-                description: "A comprehensive toolkit comparing top AI platforms, pricing tiers, and practical prompt formulas for image generation and code writing.",
-                included: ["Interactive PDF Directory", "Copy-Paste Prompt Matrix"],
-                whoShouldUse: "Content creators, marketers, and entrepreneurs.",
-                compatibility: "Universal PDF compatible.",
-                downloads: ["AI_Tools_Handbook.pdf"]
-            }
-        ];
+       const products = [
+  {
+    id: 1,
+    title: "ChatGPT Made Simple",
+    category: "Books & eBooks",
+    subCategory: "Computer & AI",
+    fileType: "PDF",
+    level: "Beginner",
+    price: 499,
+    description: "A practical guide to understanding and leveraging ChatGPT for everyday productivity.",
+    cover: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&auto=format&fit=crop&q=60"
+  },
+  {
+    id: 2,
+    title: "Silambam: The Ancient Martial Art",
+    category: "Books & eBooks",
+    subCategory: "Martial Arts",
+    fileType: "PDF",
+    level: "Intermediate",
+    price: 599,
+    description: "Comprehensive guide exploring the history, footwork, and weapon techniques of Silambam.",
+    cover: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=500&auto=format&fit=crop&q=60"
+  },
+         {
+    id: 3,
+    title: "Vinayagar Agaval",
+    category: "Books & eBooks",
+    subCategory: "Martial Arts",
+    fileType: "PDF",
+    level: "Intermediate",
+    price: 599,
+    description: "Comprehensive guide exploring the history, footwork, and weapon techniques of Silambam.",
+    cover: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=500&auto=format&fit=crop&q=60"
+  },
+
+  {
+    id: 4,
+    title: "Mind",
+    category: "Books & eBooks",
+    subCategory: "Martial Arts",
+    fileType: "PDF",
+    level: "Intermediate",
+    price: 599,
+    description: "Comprehensive guide exploring the history, footwork, and weapon techniques of Silambam.",
+    cover: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=500&auto=format&fit=crop&q=60"
+  },
+  // Add more products with respective subCategories...
+];
 
         // CART STATE
+
+
+      
         let cart = [];
 
         // INITIALIZATION
@@ -945,6 +902,22 @@
         }
 
         // PRODUCT RENDERING WITH FILTERS & SORT
+<div class="filter-group">
+  <label for="subCategoryFilter" style="font-weight: 600; color: #123758; display: block; margin-bottom: 6px;">Book Genre / Subtopic</label>
+  <select id="subCategoryFilter" class="filter-select" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    <option value="all">All Book Topics</option>
+    <option value="Spiritual">Spiritual</option>
+    <option value="Psychology">Psychology</option>
+    <option value="Computer & AI">Computer & AI</option>
+    <option value="Children's">Children's</option>
+    <option value="Adults">Adults</option>
+    <option value="Sports">Sports</option>
+    <option value="Martial Arts">Martial Arts</option>
+    <option value="Others">Others</option>
+  </select>
+</div>
+
+      
         function renderProducts() {
             const grid = document.getElementById('product-grid');
             const emptyState = document.getElementById('empty-state');
