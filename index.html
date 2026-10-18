@@ -273,6 +273,34 @@
         </section>
 
         <!-- PRODUCT CATALOGUE & FILTERING SECTION -->
+function filterProducts() {
+  const selectedMainCategory = document.getElementById('categoryFilter').value;
+  const selectedSubCategory = document.getElementById('subCategoryFilter').value;
+  const searchKeyword = document.getElementById('searchInput').value.toLowerCase();
+
+  const filtered = products.filter(product => {
+    // Check Main Category match
+    const matchesMain = selectedMainCategory === 'all' || product.category === selectedMainCategory;
+    
+    // Check Sub Category match (only applies if Books & eBooks is selected or subcategory is active)
+    let matchesSub = true;
+    if (product.category === 'Books & eBooks' && selectedSubCategory !== 'all') {
+      matchesSub = product.subCategory === selectedSubCategory;
+    }
+
+    // Check search term
+    const matchesSearch = product.title.toLowerCase().includes(searchKeyword) || 
+                          product.description.toLowerCase().includes(searchKeyword);
+
+    return matchesMain && matchesSub && matchesSearch;
+  });
+
+  renderProductGrid(filtered);
+}
+
+// Add event listener to the sub-category dropdown
+document.getElementById('subCategoryFilter').addEventListener('change', filterProducts);
+      
         <section id="catalogue-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-gray-200 gap-4">
                 <div>
