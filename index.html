@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Smart AI Books | Learn Smarter. Work Faster. Create More.</title>
-  <meta name="description" content="Practical digital knowledge, AI learning guides, Excel automation templates, and Power BI dashboards.">
+  <meta name="description" content="Explore practical books and eBooks across AI, spirituality, education, creativity, and more.">
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -753,9 +753,6 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#" onclick="switchView('home')" class="active" id="navHome">Home</a></li>
         <li><a href="#" onclick="switchView('catalogue', 'all')" id="navCatalogue">Books & eBooks</a></li>
-        <li><a href="#" onclick="switchView('catalogue', 'Excel Templates')" id="navExcel">Excel Templates</a></li>
-        <li><a href="#" onclick="switchView('catalogue', 'Power BI Dashboards')" id="navPBI">Power BI Dashboards</a></li>
-        <li><a href="#" onclick="switchView('catalogue', 'AI Guides & Toolkits')" id="navAI">AI Guides</a></li>
         <li><a href="#" onclick="openModal('legalModal', 'freeResources')">Free Resources</a></li>
         <li><a href="#" onclick="openModal('legalModal', 'about')">About</a></li>
       </ul>
@@ -778,7 +775,7 @@
       <section class="hero">
         <div class="hero-content">
           <h1>Build Skills. Create More. Work Smarter.</h1>
-          <p>Discover practical AI books, ready-to-use Excel templates, professional Power BI dashboards, and step-by-step guides designed to help you learn faster and work more efficiently.</p>
+          <p>Discover practical books and eBooks on AI, spirituality, education, creativity, and more—designed to help you learn and grow.</p>
           <div class="btn-group">
             <button class="btn btn-gold" onclick="switchView('catalogue', 'all')">Explore Products <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></button>
             <button class="btn btn-outline" onclick="openModal('legalModal', 'freeResources')">Browse Free Resources</button>
@@ -788,7 +785,7 @@
 
       <div class="container">
         <h2 class="section-title">Product Categories</h2>
-        <p class="section-subtitle">Explore our professional resources tailored for creators, professionals, and students.</p>
+        <p class="section-subtitle">Explore books and eBooks for readers, learners, creators, and professionals.</p>
         
         <div class="categories-grid">
           <div class="category-card" onclick="switchView('catalogue', 'Books & eBooks')">
@@ -796,25 +793,10 @@
             <h3>Books & eBooks</h3>
             <p>AI books, educational guides, coloring books, and reference manuals.</p>
           </div>
-          <div class="category-card" onclick="switchView('catalogue', 'Excel Templates')">
-            <i class="fa-solid fa-file-excel"></i>
-            <h3>Excel Templates</h3>
-            <p>MIS reports, automated workbooks, VBA macro tools, and trackers.</p>
-          </div>
-          <div class="category-card" onclick="switchView('catalogue', 'Power BI Dashboards')">
-            <i class="fa-solid fa-chart-line"></i>
-            <h3>Power BI Dashboards</h3>
-            <p>Business intelligence reports, sample datasets, and dashboard templates.</p>
-          </div>
-          <div class="category-card" onclick="switchView('catalogue', 'AI Guides & Toolkits')">
-            <i class="fa-solid fa-robot"></i>
-            <h3>AI Guides & Toolkits</h3>
-            <p>AI tutorials, prompt collections, practical workflows, and automation guides.</p>
-          </div>
         </div>
 
-        <h2 class="section-title">Featured Digital Products</h2>
-        <p class="section-subtitle">Hand-crafted professional tools and guides ready for instant download.</p>
+        <h2 class="section-title">Featured Books & eBooks</h2>
+        <p class="section-subtitle">Explore selected books and eBooks for learning, inspiration, and creativity.</p>
         
         <div class="product-grid" id="featuredProductGrid">
           <!-- Dynamically populated -->
@@ -842,9 +824,6 @@
               <select id="categoryFilter" class="filter-select" onchange="applyFilters()">
                 <option value="all">All Categories</option>
                 <option value="Books & eBooks">Books & eBooks</option>
-                <option value="Excel Templates">Excel Templates</option>
-                <option value="Power BI Dashboards">Power BI Dashboards</option>
-                <option value="AI Guides & Toolkits">AI Guides & Toolkits</option>
               </select>
             </div>
 
@@ -977,7 +956,7 @@
         <button class="modal-close" onclick="toggleSearchModal()"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <div class="modal-body">
-        <input type="text" id="quickSearchInput" placeholder="Search by title, topic, or keyword (e.g. ChatGPT, Excel MIS, Silambam)..." class="search-input" style="font-size: 1rem; padding: 14px;" oninput="executeQuickSearch(this.value)">
+        <input type="text" id="quickSearchInput" placeholder="Search by book title, topic, or keyword (e.g. ChatGPT, spirituality, cricket)..." class="search-input" style="font-size: 1rem; padding: 14px;" oninput="executeQuickSearch(this.value)">
         <div id="quickSearchResults" style="margin-top: 16px; max-height: 350px; overflow-y: auto;"></div>
       </div>
     </div>
@@ -988,17 +967,15 @@
     <div class="footer-grid">
       <div class="footer-col">
         <h4>Smart AI Books</h4>
-        <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 12px;">Practical digital knowledge and ready-to-use productivity tools for students, professionals, creators, and businesses.</p>
+        <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 12px;">Books and eBooks for students, professionals, creators, and curious readers.</p>
         <p style="font-size: 0.85rem; color: var(--gold);">Tagline: Learn Smarter. Work Faster. Create More.</p>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
           <li><a href="#" onclick="switchView('home')">Home</a></li>
-          <li><a href="#" onclick="switchView('catalogue', 'all')">All Products Catalogue</a></li>
+          <li><a href="#" onclick="switchView('catalogue', 'all')">All Books & eBooks</a></li>
           <li><a href="#" onclick="switchView('catalogue', 'Books & eBooks')">Books & eBooks</a></li>
-          <li><a href="#" onclick="switchView('catalogue', 'Excel Templates')">Excel Templates</a></li>
-          <li><a href="#" onclick="switchView('catalogue', 'Power BI Dashboards')">Power BI Dashboards</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1014,7 +991,7 @@
       </div>
       <div class="footer-col">
         <h4>Newsletter</h4>
-        <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 12px;">Subscribe for exclusive free productivity templates and AI guides.</p>
+        <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 12px;">Subscribe for updates on new books, eBooks, and free reading resources.</p>
         <div style="display: flex; gap: 8px;">
           <input type="email" placeholder="Your email address" style="padding: 8px; border-radius: 4px; border: none; font-size: 0.85rem; flex: 1;">
           <button class="btn btn-gold btn-sm" onclick="alert('Thank you for subscribing to Smart AI Books!')">Join</button>
@@ -1116,62 +1093,6 @@
         includes: "Full illustrated reference manual.",
         compatibility: "PDF reader.",
         license: "Personal licensing."
-      },
-      {
-        id: 7,
-        title: "Excel MIS Reporting Toolkit",
-        category: "Excel Templates",
-        subCategory: "Others",
-        fileType: "XLSX",
-        level: "Intermediate",
-        price: 799,
-        cover: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60",
-        description: "Automated management information system workbook with executive dashboard summaries and dynamic charts.",
-        includes: "Ready-to-use Excel workbook (.xlsx) with sample data.",
-        compatibility: "Microsoft Excel 2016 or newer (Desktop/Mac).",
-        license: "Business organizational license."
-      },
-      {
-        id: 8,
-        title: "Excel VBA Automation Templates",
-        category: "Excel Templates",
-        subCategory: "Others",
-        fileType: "XLSM",
-        level: "Advanced",
-        price: 999,
-        cover: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&auto=format&fit=crop&q=60",
-        description: "Powerful macro-enabled workbooks designed to automate repetitive data consolidation, report generation, and sheet formatting.",
-        includes: "Macro-enabled workbook (.xlsm) + documented VBA source code modules.",
-        compatibility: "Microsoft Excel with Macros enabled (Desktop required).",
-        license: "Professional developer license."
-      },
-      {
-        id: 9,
-        title: "Power BI Business Dashboard Pack",
-        category: "Power BI Dashboards",
-        subCategory: "Others",
-        fileType: "PBIX",
-        level: "Advanced",
-        price: 1299,
-        cover: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=500&auto=format&fit=crop&q=60",
-        description: "Professional executive reporting suite featuring sales analytics, financial performance, and inventory tracking.",
-        includes: "PBIX template file, sample Excel datasets, and step-by-step PDF setup instructions.",
-        compatibility: "Power BI Desktop (Free/Pro).",
-        license: "Single-company internal deployment license."
-      },
-      {
-        id: 10,
-        title: "AI Tools Handbook & Prompt Library",
-        category: "AI Guides & Toolkits",
-        subCategory: "Computer AI",
-        fileType: "ZIP",
-        level: "Beginner",
-        price: 699,
-        cover: "https://images.unsplash.com/photo-1677442136019-21780efad99a?w=500&auto=format&fit=crop&q=60",
-        description: "Curated collection of top AI tools, evaluation matrices, and 200+ prompt templates for marketing, coding, and writing.",
-        includes: "ZIP archive containing structured PDF guides and JSON prompt libraries.",
-        compatibility: "Universal access (.zip/.pdf).",
-        license: "Individual commercial license."
       }
     ];
 
